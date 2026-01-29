@@ -1,6 +1,6 @@
 ---
 title: About
-layout: templates/about.njk
+layout: about.njk
 ---
 
 <div class="season-card">
