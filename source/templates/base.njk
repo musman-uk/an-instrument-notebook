@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: ui-serif, Georgia, serif;
+      background: #faf9f6;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      margin-bottom: 3rem;
+    }
+
+    nav a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #444;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .note {
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+      border-left: 3px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Seasonal Notes</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+</body>
+</html>
 
