@@ -1,6 +1,6 @@
 ---
 title: "Quiet Air"
-layout: templates/note.njk
+layout: note.njk
 season: "winter"
 seasonColor: "#A3B4C8"
 id: "winter-01"
