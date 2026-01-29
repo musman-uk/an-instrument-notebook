@@ -5,6 +5,9 @@
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Handwritten font -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -43,23 +46,34 @@
       text-decoration: underline;
     }
 
+    /* Sticky-note style cards */
+    .season-card {
+      padding: 1.2rem;
+      background: #fffdf8;
+      border-left: 4px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      transform: rotate(-0.4deg);
+      transition: transform 0.15s ease;
+    }
+
+    .season-card:hover {
+      transform: rotate(-0.4deg) translateY(-3px);
+    }
+
+    /* Handwritten text */
+    .note-body {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      letter-spacing: 0.3px;
+    }
+
+    /* Homepage grid */
     .season-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
-    }
-
-    .season-card {
-      padding: 1.2rem;
-      background: #fff;
-      border-left: 4px solid #ccc;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      transition: transform 0.15s ease;
-    }
-
-    .season-card:hover {
-      transform: translateY(-3px);
     }
 
     .season-card h2 {
