@@ -1,6 +1,6 @@
 ---
 title: "Turning Leaves"
-layout: templates/note.njk
+layout: note.njk
 season: "autumn"
 seasonColor: "#D08C60"
 id: "autumn-01"
