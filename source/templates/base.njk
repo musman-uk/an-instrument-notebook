@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      padding: 2rem;
+      padding: 2.5rem;
       font-family: ui-serif, Georgia, serif;
       background: #faf9f6;
       color: #333;
@@ -16,23 +16,55 @@
     }
 
     header {
+      position: relative;
       margin-bottom: 3rem;
     }
 
-    nav a {
-      margin-right: 1rem;
-      text-decoration: none;
-      color: #444;
+    h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      letter-spacing: 0.5px;
     }
 
-    nav a:hover {
+    .about-link {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: #666;
+      padding: 0.2rem 0.4rem;
+      border-left: 2px solid #ddd;
+      opacity: 0.8;
+    }
+
+    .about-link:hover {
+      opacity: 1;
       text-decoration: underline;
     }
 
-    .note {
-      margin-bottom: 2rem;
-      padding-left: 1rem;
-      border-left: 3px solid #ccc;
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .season-card {
+      padding: 1.2rem;
+      background: #fff;
+      border-left: 4px solid #ccc;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: transform 0.15s ease;
+    }
+
+    .season-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .season-card h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
     }
   </style>
 </head>
@@ -40,10 +72,7 @@
 <body>
   <header>
     <h1>Seasonal Notes</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-    </nav>
+    <a href="/about/" class="about-link">About</a>
   </header>
 
   <main>
@@ -51,4 +80,3 @@
   </main>
 </body>
 </html>
-
