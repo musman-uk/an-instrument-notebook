@@ -1,15 +1,12 @@
-+module.exports = function(eleventyConfig) {
-  // Copy the assets folder (even if empty or containing placeholders)
+module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
-
-  // Enable deep‑merge for data files
   eleventyConfig.setDataDeepMerge(true);
 
   return {
     dir: {
-      input: "source",      // Where content + templates live
-      includes: "templates", // Templates folder (home.njk, base.njk, note.njk, about.njk)
-      output: "docs"        // Where the built site goes
+      input: "source",
+      includes: "templates",
+      output: "docs"
     },
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
