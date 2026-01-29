@@ -2,8 +2,10 @@
 layout: templates/base.njk
 ---
 
-<article class="note">
+<div class="season-card" style="border-color: {{ seasonColor }}; max-width: 520px;">
   <h2>{{ title }}</h2>
-  {{ content | safe }}
-</article>
 
+  <div class="note-body">
+    {{ content | safe }}
+  </div>
+</div>
