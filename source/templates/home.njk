@@ -2,16 +2,11 @@
 layout: templates/base.njk
 ---
 
-<h2>Seasons</h2>
-
-<ul>
+<div class="season-grid">
   {% for key, season in seasons %}
-    <li>
-      <a href="/seasons/{{ season.slug }}/" style="color: {{ season.color }}">
-        {{ season.name }}
-      </a>
+    <div class="season-card" style="border-color: {{ season.color }}">
+      <h2>{{ season.name }}</h2>
       <p>{{ season.description }}</p>
-    </li>
+    </div>
   {% endfor %}
-</ul>
-
+</div>
