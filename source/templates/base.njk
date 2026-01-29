@@ -29,6 +29,7 @@
       letter-spacing: 0.5px;
     }
 
+    /* About link — homepage only */
     .about-link {
       position: absolute;
       top: 0;
@@ -86,7 +87,11 @@
 <body>
   <header>
     <h1>Seasonal Notes</h1>
-    <a href="/about/" class="about-link">About</a>
+
+    {# Show About link ONLY on homepage #}
+    {% if page.url == "/" %}
+      <a href="/about/" class="about-link">About</a>
+    {% endif %}
   </header>
 
   <main>
