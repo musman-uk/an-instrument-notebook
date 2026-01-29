@@ -1,1 +1,13 @@
+{
+  "name": "seasonal-notes",
+  "version": "1.0.0",
+  "description": "A small, artsy static site of seasonal reflections.",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
 
