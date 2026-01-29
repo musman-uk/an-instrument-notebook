@@ -1,6 +1,6 @@
 ---
 title: "First Light"
-layout: templates/note.njk
+layout: note.njk
 season: "spring"
 seasonColor: "#8BC6A9"
 id: "spring-01"
