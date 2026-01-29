@@ -1,6 +1,6 @@
 ---
 title: "Warm Hours"
-layout: templates/note.njk
+layout: note.njk
 season: "summer"
 seasonColor: "#F4D06F"
 id: "summer-01"
