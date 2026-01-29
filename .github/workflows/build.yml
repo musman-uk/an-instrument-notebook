@@ -1,0 +1,54 @@
+name: Build Site
+
+on:
+  workflow_dispatch:        # Manual trigger
+  # pull_request:
+  #   branches: [ main ]    # Enable later if you want PR-based builds
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Cache Node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site with Eleventy
+        run: npx @11ty/eleventy
+
+      - name: Verify build output exists
+        run: |
+          if [ ! -d "docs" ]; then
+            echo "Error: docs/ folder not generated"
+            exit 1
+          fi
+
+      - name: Configure Git identity
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Commit and push generated files
+        run: |
+          git add docs
+          git commit -m "Build Complete" || echo "No changes to commit"
+          git push
