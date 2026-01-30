@@ -20,15 +20,33 @@
       letter-spacing: 1px;
     }
 
+    /* Sticky-note style About link */
     .about-link {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      font-size: 0.9rem;
-      opacity: 0.8;
+      background: #fffef7;
+      padding: 0.6rem 1rem;
+      border: 1px solid #e0dfd8;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+      transform: rotate(2deg);
+      font-family: "Bradley Hand", cursive;
+      text-decoration: none;
+      color: #222;
+      z-index: 10;
+    }
+
+    /* Container for desktop layout */
+    .notes-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-top: 2rem;
     }
 
     .season {
+      width: 100%;
       margin-top: 3rem;
       font-size: 1.4rem;
       font-weight: bold;
@@ -40,15 +58,14 @@
     .note {
       background: #fffef7;
       padding: 1rem;
-      margin: 1.2rem 0;
-      width: fit-content;
-      max-width: 420px;
+      width: 260px;
       border: 1px solid #e0dfd8;
       box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
       transform: rotate(-1deg);
       font-family: "Bradley Hand", cursive;
       font-size: 1.1rem;
-      opacity: 0; /* for animation */
+
+      opacity: 0;
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
@@ -57,36 +74,50 @@
       transform: rotate(var(--tilt, -1deg));
     }
 
-    .note:nth-child(even) {
-      transform: rotate(1.2deg);
-      margin-left: 1.5rem;
+    /* Seasonal palettes */
+    .note-spring {
+      background: #e8fbe8;
+      border-color: #b8e6b8;
     }
 
-    /* Seasonal colour variations */
-    .note-spring { background: #f4ffe9; border-color: #c7e8b4; }
-    .note-summer { background: #fff7d1; border-color: #ffe7a1; }
-    .note-autumn { background: #fff1e6; border-color: #f4c49b; }
-    .note-winter { background: #eef6ff; border-color: #dbe7f0; }
+    .note-summer {
+      background: #fff4c7;
+      border-color: #ffd98a;
+    }
+
+    .note-autumn {
+      background: #ffe8d9;
+      border-color: #f2b48c;
+    }
+
+    .note-winter {
+      background: #e7f1ff;
+      border-color: #c7d9f2;
+    }
   </style>
 </head>
 
 <body>
 
-  <a class="about-link" href="/about/">About</a>
+  <a class="about-link" href="about/">About</a>
 
   <h1>Seasonal Notes</h1>
 
-  {% for season in ["spring", "summer", "autumn", "winter"] %}
-    <div class="season">{{ season | capitalize }}</div>
+  <div class="notes-container">
 
-    {% for note in collections.notes %}
-      {% if note.data.season == season %}
-        <div class="note note-{{ season }}">
-          {{ note.templateContent | safe }}
-        </div>
-      {% endif %}
+    {% for season in ["spring", "summer", "autumn", "winter"] %}
+      <div class="season">{{ season | capitalize }}</div>
+
+      {% for note in collections.notes %}
+        {% if note.data.season == season %}
+          <div class="note note-{{ season }}">
+            {{ note.templateContent | safe }}
+          </div>
+        {% endif %}
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
+
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
