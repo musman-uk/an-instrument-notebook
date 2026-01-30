@@ -6,7 +6,7 @@
 
   <style>
     body {
-      font-family: "Bradley Hand", "Comic Sans MS", cursive;
+      font-family: "Bradley Hand", cursive;
       background: #faf9f6;
       color: #222;
       margin: 0;
@@ -14,13 +14,21 @@
       line-height: 1.6;
     }
 
-    h1 {
+    /* Title card */
+    .title-card {
+      background: #fff8d6;
+      color: #1a4b8c;
+      padding: 1rem 2rem;
+      border: 1px solid #e0dfd8;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
       font-size: 2rem;
-      margin-bottom: 2rem;
+      width: fit-content;
+      margin: 0 auto 2rem auto;
+      transform: rotate(-1deg);
       letter-spacing: 1px;
     }
 
-    /* Sticky-note style About link */
+    /* About link */
     .about-link {
       position: fixed;
       top: 1rem;
@@ -36,63 +44,66 @@
       z-index: 10;
     }
 
-    /* Container for desktop layout */
-    .notes-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      align-items: flex-start;
-      margin-top: 2rem;
+    /* Organic 2×2 seasonal layout */
+    .seasons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
 
-    .season {
-      width: 100%;
-      margin-top: 3rem;
+    .season-block {
+      padding: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.08);
+      transform: rotate(var(--tilt));
+    }
+
+    /* Seasonal palettes */
+    .spring { background: #e8fbe8; --tilt: -1deg; }
+    .summer { background: #fff4c7; --tilt: 0.8deg; }
+    .autumn { background: #ffe8d9; --tilt: -0.6deg; }
+    .winter { background: #e7f1ff; --tilt: 1deg; }
+
+    .season-title {
       font-size: 1.4rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      opacity: 0.7;
+      color: #1a4b8c;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
     }
 
+    /* Notes */
     .note {
       background: #fffef7;
-      padding: 1rem;
-      width: 260px;
+      padding: 0.7rem;
+      width: 180px;
       border: 1px solid #e0dfd8;
       box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
       transform: rotate(-1deg);
-      font-family: "Bradley Hand", cursive;
-      font-size: 1.1rem;
-
+      font-size: 1rem;
+      margin: 0.5rem;
       opacity: 0;
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .note.visible {
       opacity: 1;
-      transform: rotate(var(--tilt, -1deg));
+      transform: rotate(var(--tilt-note, -1deg));
     }
 
-    /* Seasonal palettes */
-    .note-spring {
-      background: #e8fbe8;
-      border-color: #b8e6b8;
+    .notes-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    .note-summer {
-      background: #fff4c7;
-      border-color: #ffd98a;
-    }
-
-    .note-autumn {
-      background: #ffe8d9;
-      border-color: #f2b48c;
-    }
-
-    .note-winter {
-      background: #e7f1ff;
-      border-color: #c7d9f2;
+    /* Mobile layout */
+    @media (max-width: 700px) {
+      .seasons-grid {
+        grid-template-columns: 1fr;
+      }
+      .season-block {
+        transform: rotate(0deg);
+      }
     }
   </style>
 </head>
@@ -101,20 +112,24 @@
 
   <a class="about-link" href="about/">About</a>
 
-  <h1>Seasonal Notes</h1>
+  <div class="title-card">Seasonal Notes</div>
 
-  <div class="notes-container">
+  <div class="seasons-grid">
 
     {% for season in ["spring", "summer", "autumn", "winter"] %}
-      <div class="season">{{ season | capitalize }}</div>
+      <div class="season-block {{ season }}">
+        <div class="season-title">{{ season | capitalize }}</div>
 
-      {% for note in collections.notes %}
-        {% if note.data.season == season %}
-          <div class="note note-{{ season }}">
-            {{ note.templateContent | safe }}
-          </div>
-        {% endif %}
-      {% endfor %}
+        <div class="notes-wrap">
+          {% for note in collections.notes %}
+            {% if note.data.season == season %}
+              <div class="note">
+                {{ note.templateContent | safe }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
     {% endfor %}
 
   </div>
@@ -124,7 +139,7 @@
       const notes = document.querySelectorAll(".note");
 
       notes.forEach((note, i) => {
-        const delay = 200 + i * 150;
+        const delay = 200 + i * 120;
         setTimeout(() => {
           note.classList.add("visible");
         }, delay);
