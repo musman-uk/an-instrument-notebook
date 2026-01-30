@@ -13,6 +13,12 @@
       line-height: 1.6;
       max-width: 650px;
       margin: 0 auto;
+
+      /* subtle paper texture */
+      background-image:
+        radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));
+      background-size: 4px 4px, 100% 100%;
     }
 
     h1 {
@@ -26,18 +32,34 @@
       margin-bottom: 1.2rem;
     }
 
-    /* Neutral sticky-note style back link */
+    /* Sticky-note style back link with doodle */
     .back-link {
       display: inline-block;
-      background: #fffef7;
-      padding: 0.6rem 1rem;
+      background: #fff8d6; /* same yellow as notes */
+      padding: 0.7rem 1.2rem;
       border: 1px solid #e0dfd8;
-      box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
-      transform: rotate(-1deg);
+      box-shadow: 3px 4px 7px rgba(0,0,0,0.15);
+      transform: rotate(-2deg);
       font-family: "Bradley Hand", cursive;
       text-decoration: none;
-      color: #222;
+      color: #1a4b8c; /* blue ink */
       margin-top: 2rem;
+      position: relative;
+    }
+
+    /* Tiny expressive doodle behind the link */
+    .back-link::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: -22px;
+      width: 160%;
+      height: 160%;
+      background: radial-gradient(circle at 30% 40%, rgba(255,230,150,0.45), transparent 70%),
+                  radial-gradient(circle at 70% 80%, rgba(180,210,255,0.35), transparent 70%);
+      z-index: -1;
+      transform: rotate(4deg);
+      pointer-events: none;
     }
   </style>
 </head>
