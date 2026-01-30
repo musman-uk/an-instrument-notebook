@@ -1,15 +1,13 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.setDataDeepMerge(true);
+
+  eleventyConfig.addCollection("notes", function (collection) {
+    return collection.getFilteredByGlob("source/content/seasons/**/*.md");
+  });
 
   return {
     dir: {
       input: "source",
-      includes: "templates",
       output: "docs"
-    },
-    htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk",
-    dataTemplateEngine: "njk"
+    }
   };
 };
