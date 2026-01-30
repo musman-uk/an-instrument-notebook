@@ -7,14 +7,13 @@
   <style>
     body {
       font-family: "Bradley Hand", cursive;
-      background: #fff8d6;
+      background: #ffeeb0;
       color: #1a4b8c;
       padding: 2rem;
       line-height: 1.6;
       max-width: 650px;
       margin: 0 auto;
 
-      /* Paper texture */
       background-image:
         radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
         linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));
@@ -37,12 +36,12 @@
       z-index: 2;
     }
 
-    /* Sticky-note Back link */
+    /* Back link — paler yellow, no aura */
     .back-link {
       display: inline-block;
-      background: #ffeeb0;
+      background: #fff4c9;
       padding: 0.7rem 1.2rem;
-      border: 1px solid #d8cfa0;
+      border: 1px solid #e8e0b8;
       box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
       transform: rotate(-2deg);
       font-family: "Bradley Hand", cursive;
@@ -53,22 +52,7 @@
       z-index: 2;
     }
 
-    /* Seasonal doodles around Back link */
-    .back-link::before {
-      content: "";
-      position: absolute;
-      top: -22px;
-      left: -28px;
-      width: 190%;
-      height: 190%;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255,200,230,0.35), transparent 70%), /* Spring petals */
-        radial-gradient(circle at 80% 20%, rgba(255,220,140,0.35), transparent 70%), /* Summer sun */
-        radial-gradient(circle at 20% 80%, rgba(210,130,70,0.35), transparent 70%),  /* Autumn leaves */
-        radial-gradient(circle at 80% 80%, rgba(180,220,255,0.35), transparent 70%); /* Winter snow */
-      z-index: -1;
-      transform: rotate(3deg);
-    }
+    /* Removed back-link::before aura */
   </style>
 </head>
 
