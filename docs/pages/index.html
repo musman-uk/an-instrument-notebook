@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Seasonal Notes</title>
+
+  <style>
+    body {
+      font-family: "Bradley Hand", "Comic Sans MS", cursive;
+      background: #faf9f6;
+      color: #222;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .about-link {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .season {
+      margin-top: 3rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    .note {
+      background: #fffef7;
+      padding: 1rem;
+      margin: 1.2rem 0;
+      width: fit-content;
+      max-width: 420px;
+      border: 1px solid #e0dfd8;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+      font-family: "Bradley Hand", cursive;
+      font-size: 1.1rem;
+      opacity: 0; /* for animation */
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .note.visible {
+      opacity: 1;
+      transform: rotate(var(--tilt, -1deg));
+    }
+
+    .note:nth-child(even) {
+      transform: rotate(1.2deg);
+      margin-left: 1.5rem;
+    }
+
+    /* Seasonal colour variations */
+    .note-spring { background: #f4ffe9; border-color: #c7e8b4; }
+    .note-summer { background: #fff7d1; border-color: #ffe7a1; }
+    .note-autumn { background: #fff1e6; border-color: #f4c49b; }
+    .note-winter { background: #eef6ff; border-color: #dbe7f0; }
+  </style>
+</head>
+
+<body>
+
+  <a class="about-link" href="/about/">About</a>
+
+  <h1>Seasonal Notes</h1>
+
+  
+    <div class="season">Spring</div>
+
+    
+      
+    
+      
+        <div class="note note-spring">
+          <p>The first warm breeze arrived today, carrying the scent of wet soil.</p>
+
+        </div>
+      
+    
+      
+    
+      
+    
+  
+    <div class="season">Summer</div>
+
+    
+      
+    
+      
+    
+      
+        <div class="note note-summer">
+          <p>The air felt heavy today, thick with sunlight and the hum of insects.</p>
+
+        </div>
+      
+    
+      
+    
+  
+    <div class="season">Autumn</div>
+
+    
+      
+        <div class="note note-autumn">
+          <p>The leaves looked like they were giving up today,<br>
+letting go in slow spirals,<br>
+as if the air had finally convinced them<br>
+to stop pretending to hold on.</p>
+
+        </div>
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    <div class="season">Winter</div>
+
+    
+      
+    
+      
+    
+      
+    
+      
+        <div class="note note-winter">
+          <p>Frost on the window this morning —<br>
+thin, crooked lines like someone<br>
+scribbled on the glass while half‑asleep.</p>
+
+        </div>
+      
+    
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const notes = document.querySelectorAll(".note");
+
+      notes.forEach((note, i) => {
+        const delay = 200 + i * 150;
+        setTimeout(() => {
+          note.classList.add("visible");
+        }, delay);
+      });
+    });
+  </script>
+
+</body>
+</html>
