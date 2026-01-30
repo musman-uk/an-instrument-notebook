@@ -48,12 +48,25 @@
       transform: rotate(-1deg);
       font-family: "Bradley Hand", cursive;
       font-size: 1.1rem;
+      opacity: 0; /* for animation */
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .note.visible {
+      opacity: 1;
+      transform: rotate(var(--tilt, -1deg));
     }
 
     .note:nth-child(even) {
       transform: rotate(1.2deg);
       margin-left: 1.5rem;
     }
+
+    /* Seasonal colour variations */
+    .note-spring { background: #f4ffe9; border-color: #c7e8b4; }
+    .note-summer { background: #fff7d1; border-color: #ffe7a1; }
+    .note-autumn { background: #fff1e6; border-color: #f4c49b; }
+    .note-winter { background: #eef6ff; border-color: #dbe7f0; }
   </style>
 </head>
 
@@ -66,12 +79,27 @@
   {% for season in ["spring", "summer", "autumn", "winter"] %}
     <div class="season">{{ season | capitalize }}</div>
 
-    {% for note in collections.notes | filterBy("data.season", season) %}
-      <div class="note">
-        {{ note.templateContent | safe }}
-      </div>
+    {% for note in collections.notes %}
+      {% if note.data.season == season %}
+        <div class="note note-{{ season }}">
+          {{ note.templateContent | safe }}
+        </div>
+      {% endif %}
     {% endfor %}
   {% endfor %}
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const notes = document.querySelectorAll(".note");
+
+      notes.forEach((note, i) => {
+        const delay = 200 + i * 150;
+        setTimeout(() => {
+          note.classList.add("visible");
+        }, delay);
+      });
+    });
+  </script>
 
 </body>
 </html>
