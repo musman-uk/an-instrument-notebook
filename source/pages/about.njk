@@ -7,18 +7,19 @@
   <style>
     body {
       font-family: "Bradley Hand", cursive;
-      background: #fff8d6; /* warm yellow */
-      color: #1a4b8c;      /* ink blue */
+      background: #fff8d6;
+      color: #1a4b8c;
       padding: 2rem;
       line-height: 1.6;
       max-width: 650px;
       margin: 0 auto;
 
-      /* subtle paper texture */
+      /* Paper texture */
       background-image:
         radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
         linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));
       background-size: 4px 4px, 100% 100%;
+      position: relative;
     }
 
     h1 {
@@ -26,40 +27,47 @@
       margin-bottom: 1.5rem;
       letter-spacing: 1px;
       color: #1a4b8c;
+      position: relative;
+      z-index: 2;
     }
 
     p {
       margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Sticky-note style back link with doodle */
+    /* Sticky-note Back link */
     .back-link {
       display: inline-block;
-      background: #fff8d6; /* same yellow as notes */
+      background: #ffeeb0;
       padding: 0.7rem 1.2rem;
-      border: 1px solid #e0dfd8;
-      box-shadow: 3px 4px 7px rgba(0,0,0,0.15);
+      border: 1px solid #d8cfa0;
+      box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
       transform: rotate(-2deg);
       font-family: "Bradley Hand", cursive;
       text-decoration: none;
-      color: #1a4b8c; /* blue ink */
+      color: #1a4b8c;
       margin-top: 2rem;
       position: relative;
+      z-index: 2;
     }
 
-    /* Tiny expressive doodle behind the link */
+    /* Seasonal doodles around Back link */
     .back-link::before {
       content: "";
       position: absolute;
-      top: -18px;
-      left: -22px;
-      width: 160%;
-      height: 160%;
-      background: radial-gradient(circle at 30% 40%, rgba(255,230,150,0.45), transparent 70%),
-                  radial-gradient(circle at 70% 80%, rgba(180,210,255,0.35), transparent 70%);
+      top: -22px;
+      left: -28px;
+      width: 190%;
+      height: 190%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,200,230,0.35), transparent 70%), /* Spring petals */
+        radial-gradient(circle at 80% 20%, rgba(255,220,140,0.35), transparent 70%), /* Summer sun */
+        radial-gradient(circle at 20% 80%, rgba(210,130,70,0.35), transparent 70%),  /* Autumn leaves */
+        radial-gradient(circle at 80% 80%, rgba(180,220,255,0.35), transparent 70%); /* Winter snow */
       z-index: -1;
-      transform: rotate(4deg);
-      pointer-events: none;
+      transform: rotate(3deg);
     }
   </style>
 </head>
@@ -69,25 +77,25 @@
   <h1>About</h1>
 
   <p>
-    Seasonal Notes is a small, quiet experiment in noticing.  
+    Seasonal Notes is a small, quiet experiment in noticing.
     Instead of building a traditional website with tidy pages and rigid structure,
     this project gathers fragments — small seasonal impressions — and scatters them
     across a single canvas.
   </p>
 
   <p>
-    The notes are intentionally messy, a little crooked, like sticky notes pinned
+    The notes are intentionally a little crooked, like sticky notes pinned
     to a wall or scribbles left on a desk. They aren’t meant to stand alone as
     pages. They belong together, side by side, forming a loose collage of the year.
   </p>
 
   <p>
     This page exists only to explain the intention behind the form — a companion
-    note to the main piece.
+    note to the main piece, written in the margin.
   </p>
 
   <p>
-    <a class="back-link" href="../index.html">Back to Seasonal Notes</a>
+    <a class="back-link" href="../">Back to Seasonal Notes</a>
   </p>
 
 </body>
