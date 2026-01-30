@@ -2,465 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Seasonal Notes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+
   <style>
-    :root {
-      --bg: #f7f4ee;
-      --ink: #2f2720;
-      --spring-main: #f9d7e8;
-      --spring-accent: #f3a9c9;
-      --summer-main: #ffe7b3;
-      --summer-accent: #ffc766;
-      --autumn-main: #f6d9b3;
-      --autumn-accent: #e49a4a;
-      --winter-main: #dfe9f7;
-      --winter-accent: #9fb7dd;
-      --note-bg: #fffdf6;
-      --note-border: #e0d4b8;
-      --link-bg: #fff3b8;
-      --link-border: #e0c46a;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      padding: 2.5rem 1.5rem 3rem;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.5;
-      display: flex;
-      justify-content: center;
-    }
+      font-family: "Bradley Hand", cursive;
+      background: #fff8d6;
+      color: #1a4b8c;
+      padding: 2rem;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto;
 
-    .page {
-      max-width: 960px;
-      width: 100%;
+      /* Paper texture */
+      background-image:
+        radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));
+      background-size: 4px 4px, 100% 100%;
+      position: relative;
     }
 
     h1 {
-      font-size: 2.4rem;
-      margin: 0 0 0.5rem;
-      letter-spacing: 0.04em;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      color: #1a4b8c;
+      position: relative;
+      z-index: 2;
     }
 
-    .subtitle {
-      margin-bottom: 1.8rem;
-      font-size: 0.95rem;
-      max-width: 32rem;
+    p {
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 2;
     }
 
-    .top-links {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .top-link {
+    /* Sticky-note Back link */
+    .back-link {
       display: inline-block;
-      padding: 0.4rem 0.7rem;
-      background: var(--link-bg);
-      border: 1px solid var(--link-border);
-      border-radius: 0.35rem;
-      font-size: 0.85rem;
+      background: #ffeeb0;
+      padding: 0.7rem 1.2rem;
+      border: 1px solid #d8cfa0;
+      box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
+      transform: rotate(-2deg);
+      font-family: "Bradley Hand", cursive;
       text-decoration: none;
-      color: var(--ink);
-      box-shadow: 0 2px 0 rgba(0,0,0,0.12);
-      transform: rotate(-1deg);
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
-    }
-
-    .top-link:hover {
-      transform: rotate(0deg) translateY(-1px);
-      box-shadow: 0 3px 0 rgba(0,0,0,0.16);
-    }
-
-    .seasons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.8rem;
-    }
-
-    .season {
+      color: #1a4b8c;
+      margin-top: 2rem;
       position: relative;
-      padding: 1.1rem 1rem 1rem;
-      border-radius: 0.9rem;
-      overflow: visible;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      background: #f5f1e8;
+      z-index: 2;
     }
 
-    .season-inner {
-      position: relative;
-      padding: 0.9rem 0.8rem 0.8rem;
-      border-radius: 0.7rem;
-      background: #fdfaf4;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
-    }
-
-    .season-title {
-      font-size: 1.1rem;
-      margin: 0 0 0.4rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .season-label {
-      font-size: 0.8rem;
-      opacity: 0.7;
-      margin-bottom: 0.6rem;
-    }
-
-    .notes {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .note {
-      display: inline-block;
-      max-width: 15rem;
-      padding: 0.35rem 0.45rem;
-      background: var(--note-bg);
-      border-radius: 0.4rem;
-      border: 1px solid var(--note-border);
-      font-size: 0.85rem;
-      word-break: break-word;
-      box-shadow: 0 2px 0 rgba(0,0,0,0.08);
-      transform: rotate(-0.7deg);
-    }
-
-    .note:nth-child(2n) {
-      transform: rotate(0.6deg);
-    }
-
-    .note:nth-child(3n) {
-      transform: rotate(-1.1deg);
-    }
-
-    /* Watercolour-style washes per season */
-    .season--spring .season-inner {
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,255,255,0.9) 0, transparent 55%),
-        radial-gradient(circle at 80% 100%, rgba(255,255,255,0.9) 0, transparent 55%),
-        radial-gradient(circle at 0% 80%, var(--spring-main) 0, transparent 60%),
-        radial-gradient(circle at 100% 20%, var(--spring-accent) 0, transparent 60%),
-        #fef7fb;
-    }
-
-    .season--summer .season-inner {
-      background:
-        radial-gradient(circle at 15% 0%, rgba(255,255,255,0.9) 0, transparent 55%),
-        radial-gradient(circle at 85% 100%, rgba(255,255,255,0.9) 0, transparent 55%),
-        radial-gradient(circle at 0% 80%, var(--summer-main) 0, transparent 60%),
-        radial-gradient(circle at 100% 20%, var(--summer-accent) 0, transparent 60%),
-        #fff9ec;
-    }
-
-    .season--autumn .season-inner {
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,255,255,0.9) 0, transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(255,255,255,0.9) 0, transparent 55%),
-        radial-gradient(circle at 0% 80%, var(--autumn-main) 0, transparent 60%),
-        radial-gradient(circle at 100% 20%, var(--autumn-accent) 0, transparent 60%),
-        #fdf4ea;
-    }
-
-    .season--winter .season-inner {
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,255,255,0.95) 0, transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(255,255,255,0.95) 0, transparent 55%),
-        radial-gradient(circle at 0% 80%, var(--winter-main) 0, transparent 60%),
-        radial-gradient(circle at 100% 20%, var(--winter-accent) 0, transparent 60%),
-        #f5f8fc;
-    }
-
-    /* SVG doodles */
-    .doodle {
+    /* Seasonal doodles around Back link */
+    .back-link::before {
+      content: "";
       position: absolute;
-      width: 42px;
-      height: 42px;
-      pointer-events: none;
-      opacity: 0.9;
-      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.12));
-      transform-origin: center center;
-    }
-
-    .doodle svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .doodle--spring path.blob {
-      fill: url(#springBlobGradient);
-    }
-    .doodle--spring path.outline {
-      stroke: #c45a87;
-    }
-
-    .doodle--summer path.blob {
-      fill: url(#summerBlobGradient);
-    }
-    .doodle--summer path.outline {
-      stroke: #e08a1f;
-    }
-
-    .doodle--autumn path.blob {
-      fill: url(#autumnBlobGradient);
-    }
-    .doodle--autumn path.outline {
-      stroke: #b5631f;
-    }
-
-    .doodle--winter path.blob {
-      fill: url(#winterBlobGradient);
-    }
-    .doodle--winter path.outline {
-      stroke: #4f6fa8;
-    }
-
-    .footer {
-      margin-top: 2.4rem;
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 1.8rem 1.1rem 2.4rem;
-      }
-      h1 {
-        font-size: 2rem;
-      }
+      top: -22px;
+      left: -28px;
+      width: 190%;
+      height: 190%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,200,230,0.35), transparent 70%), /* Spring petals */
+        radial-gradient(circle at 80% 20%, rgba(255,220,140,0.35), transparent 70%), /* Summer sun */
+        radial-gradient(circle at 20% 80%, rgba(210,130,70,0.35), transparent 70%),  /* Autumn leaves */
+        radial-gradient(circle at 80% 80%, rgba(180,220,255,0.35), transparent 70%); /* Winter snow */
+      z-index: -1;
+      transform: rotate(3deg);
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <header>
-      <h1>Seasonal Notes</h1>
-      <p class="subtitle">
-        Fragments arranged by season, like small handwritten slips pinned to a single page.
-      </p>
-      <div class="top-links">
-        <a href="/about/" class="top-link">About this artefact</a>
-      </div>
-    </header>
 
-    <!-- Hidden SVG defs for gradients -->
-    <svg width="0" height="0" style="position:absolute;visibility:hidden;">
-      <defs>
-        <radialGradient id="springBlobGradient" cx="30%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#ffeaf5" stop-opacity="0.95" />
-          <stop offset="55%" stop-color="#f7b9d6" stop-opacity="0.9" />
-          <stop offset="100%" stop-color="#f093c0" stop-opacity="0.0" />
-        </radialGradient>
-        <radialGradient id="summerBlobGradient" cx="30%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#fff4cf" stop-opacity="0.95" />
-          <stop offset="55%" stop-color="#ffd58a" stop-opacity="0.9" />
-          <stop offset="100%" stop-color="#ffb84a" stop-opacity="0.0" />
-        </radialGradient>
-        <radialGradient id="autumnBlobGradient" cx="30%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#ffe9cf" stop-opacity="0.95" />
-          <stop offset="55%" stop-color="#f0b37a" stop-opacity="0.9" />
-          <stop offset="100%" stop-color="#d47a2b" stop-opacity="0.0" />
-        </radialGradient>
-        <radialGradient id="winterBlobGradient" cx="30%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#f3f7ff" stop-opacity="0.95" />
-          <stop offset="55%" stop-color="#c3d5f3" stop-opacity="0.9" />
-          <stop offset="100%" stop-color="#8aa4d6" stop-opacity="0.0" />
-        </radialGradient>
-      </defs>
-    </svg>
+  <h1>About</h1>
 
-    <main class="seasons-grid">
-      <!-- SPRING -->
-      <section class="season season--spring">
-        <div class="season-inner">
-          <div class="season-title">Spring</div>
-          <div class="season-label">early light, soft beginnings</div>
-          <div class="notes">
-            <div class="note">The first warmth that doesn’t apologise.</div>
-            <div class="note">Windows open, dust turning golden in the air.</div>
-            <div class="note">A list of things I might become, written in pencil.</div>
-          </div>
+  <p>
+    Seasonal Notes is a small, quiet experiment in noticing.
+    Instead of building a traditional website with tidy pages and rigid structure,
+    this project gathers fragments — small seasonal impressions — and scatters them
+    across a single canvas.
+  </p>
 
-          <!-- Spring doodles -->
-          <div class="doodle doodle--spring">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M18,40 Q35,15 55,20 T85,40 Q90,60 70,78 T35,82 Q15,70 18,40 Z" />
-              <path class="outline" d="M18,40 Q35,15 55,20 T85,40 Q90,60 70,78 T35,82 Q15,70 18,40 Z"
-                    fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--spring">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M20,50 Q30,25 50,22 T80,38 Q85,55 68,72 T40,78 Q22,68 20,50 Z" />
-              <path class="outline" d="M20,50 Q30,25 50,22 T80,38 Q85,55 68,72 T40,78 Q22,68 20,50 Z"
-                    fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--spring">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M25,45 Q40,28 55,30 T78,48 Q75,65 60,75 T38,78 Q26,65 25,45 Z" />
-              <path class="outline" d="M25,45 Q40,28 55,30 T78,48 Q75,65 60,75 T38,78 Q26,65 25,45 Z"
-                    fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </div>
-      </section>
+  <p>
+    The notes are intentionally a little crooked, like sticky notes pinned
+    to a wall or scribbles left on a desk. They aren’t meant to stand alone as
+    pages. They belong together, side by side, forming a loose collage of the year.
+  </p>
 
-      <!-- SUMMER -->
-      <section class="season season--summer">
-        <div class="season-inner">
-          <div class="season-title">Summer</div>
-          <div class="season-label">heat, distance, long evenings</div>
-          <div class="notes">
-            <div class="note">The air thick enough to lean on.</div>
-            <div class="note">Messages typed and deleted in the same breath.</div>
-            <div class="note">Late walks where the sky refuses to dim.</div>
-          </div>
+  <p>
+    This page exists only to explain the intention behind the form — a companion
+    note to the main piece, written in the margin.
+  </p>
 
-          <!-- Summer doodles -->
-          <div class="doodle doodle--summer">
-            <svg viewBox="0 0 100 100">
-              <circle class="blob" cx="50" cy="50" r="30" />
-              <circle class="outline" cx="50" cy="50" r="30"
-                      fill="none" stroke-width="2.4" stroke-linecap="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--summer">
-            <svg viewBox="0 0 100 100">
-              <circle class="blob" cx="52" cy="48" r="26" />
-              <circle class="outline" cx="52" cy="48" r="26"
-                      fill="none" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--summer">
-            <svg viewBox="0 0 100 100">
-              <circle class="blob" cx="48" cy="52" r="24" />
-              <circle class="outline" cx="48" cy="52" r="24"
-                      fill="none" stroke-width="1.8" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
-      </section>
+  <p>
+    <a class="back-link" href="../">Back to Seasonal Notes</a>
+  </p>
 
-      <!-- AUTUMN -->
-      <section class="season season--autumn">
-        <div class="season-inner">
-          <div class="season-title">Autumn</div>
-          <div class="season-label">leaving, returning, in-between</div>
-          <div class="notes">
-            <div class="note">Coats come down from the top of the wardrobe.</div>
-            <div class="note">The city smells like rain and exhaust and endings.</div>
-            <div class="note">I keep every receipt, as if I’ll need proof.</div>
-          </div>
-
-          <!-- Autumn doodles -->
-          <div class="doodle doodle--autumn">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M30,20 Q55,15 70,30 T75,60 Q65,80 45,82 T25,65 Q20,45 30,20 Z" />
-              <path class="outline" d="M30,20 Q55,15 70,30 T75,60 Q65,80 45,82 T25,65 Q20,45 30,20 Z"
-                    fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--autumn">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M32,25 Q50,18 68,32 T70,58 Q60,74 44,78 T28,64 Q24,46 32,25 Z" />
-              <path class="outline" d="M32,25 Q50,18 68,32 T70,58 Q60,74 44,78 T28,64 Q24,46 32,25 Z"
-                    fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--autumn">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M28,30 Q48,20 66,34 T68,60 Q58,74 42,76 T26,62 Q22,46 28,30 Z" />
-              <path class="outline" d="M28,30 Q48,20 66,34 T68,60 Q58,74 42,76 T26,62 Q22,46 28,30 Z"
-                    fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      <!-- WINTER -->
-      <section class="season season--winter">
-        <div class="season-inner">
-          <div class="season-title">Winter</div>
-          <div class="season-label">quiet, weight, small lights</div>
-          <div class="notes">
-            <div class="note">The sky turns dark before I’m ready.</div>
-            <div class="note">Mugs left half-finished on every surface.</div>
-            <div class="note">Silence that feels heavy, not kind.</div>
-          </div>
-
-          <!-- Winter doodles -->
-          <div class="doodle doodle--winter">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M30,30 Q50,15 70,30 T80,50 Q70,70 50,80 T30,70 Q20,50 30,30 Z" />
-              <path class="outline" d="M30,30 L50,20 L70,30 L80,50 L70,70 L50,80 L30,70 L20,50 Z"
-                    fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--winter">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M32,32 Q50,18 68,32 T78,50 Q68,68 50,78 T32,68 Q22,50 32,32 Z" />
-              <path class="outline" d="M32,32 L50,22 L68,32 L78,50 L68,68 L50,78 L32,68 L22,50 Z"
-                    fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <div class="doodle doodle--winter">
-            <svg viewBox="0 0 100 100">
-              <path class="blob" d="M28,34 Q48,20 66,34 T76,52 Q66,68 48,76 T30,68 Q20,52 28,34 Z" />
-              <path class="outline" d="M28,34 L48,22 L66,34 L76,52 L66,68 L48,76 L30,68 L20,52 Z"
-                    fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      A single-page artefact of seasons and fragments.
-    </footer>
-  </div>
-
-  <script>
-    (function () {
-      function randomBetween(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      document.querySelectorAll('.season').forEach(function (seasonEl) {
-        var rect = seasonEl.getBoundingClientRect();
-        var width = rect.width;
-        var height = rect.height;
-
-        seasonEl.querySelectorAll('.doodle').forEach(function (doodleEl) {
-          // Position relative to the season container
-          var offsetX = randomBetween(-10, 10); // px
-          var offsetY = randomBetween(-10, 10); // px
-
-          var posX = randomBetween(-0.1 * width, 0.7 * width);
-          var posY = randomBetween(-0.15 * height, 0.75 * height);
-
-          var rotation = randomBetween(-18, 18); // degrees
-          var scale = randomBetween(0.85, 1.15);
-          var opacity = randomBetween(0.65, 0.95);
-
-          doodleEl.style.left = (posX + offsetX) + 'px';
-          doodleEl.style.top = (posY + offsetY) + 'px';
-          doodleEl.style.transform =
-            'rotate(' + rotation + 'deg) scale(' + scale + ')';
-          doodleEl.style.opacity = opacity.toFixed(2);
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
