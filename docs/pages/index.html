@@ -9,7 +9,7 @@
     /* Page background */
     body {
       font-family: "Bradley Hand", cursive;
-      background: #faf9f6;
+      background: #dcdad6; /* updated neutral background */
       color: #222;
       margin: 0;
       padding: 1.2rem;
@@ -17,11 +17,11 @@
       position: relative;
     }
 
-    /* Sticky‑note style link */
+    /* Sticky‑note style About link (fixed + tilt) */
     .about-link {
       position: fixed;
-      top: 1rem;
-      right: 1rem;
+      bottom: 1.5rem;
+      left: 1.5rem;
       background: #ffeeb0;
       border: 1px solid #d8cfa0;
       box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
@@ -30,7 +30,17 @@
       font-family: "Bradley Hand", cursive;
       text-decoration: none;
       color: #1a4b8c;
-      z-index: 10;
+      z-index: 20;
+    }
+
+    /* Mobile refinement: keep tilt, adjust spacing */
+    @media (max-width: 700px) {
+      .about-link {
+        bottom: 1rem;
+        left: 1rem;
+        padding: 0.5rem 0.9rem;
+        transform: rotate(2deg);
+      }
     }
 
     /* Sticky‑note title */
@@ -67,10 +77,6 @@
       isolation: isolate;
       color: #1a4b8c;
     }
-
-    /* ---------------------------------------------------------
-       UPDATED EXPRESSIVE WATERCOLOR PALETTES (OPTION B)
-       --------------------------------------------------------- */
 
     /* SPRING */
     .spring {
