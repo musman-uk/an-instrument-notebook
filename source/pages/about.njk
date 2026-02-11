@@ -41,12 +41,13 @@
 
     /* Sticky‑note link back to Seasonal Notes */
     .back-link {
+      --tilt: 2deg;
       display: inline-block;
       background: #ffeeb0;
       border: 1px solid #d8cfa0;
       box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
       padding: 0.7rem 1.2rem;
-      transform: rotate(2deg);
+      transform: rotate(var(--tilt));
       font-family: "Bradley Hand", cursive;
       text-decoration: none;
       color: #1a4b8c;
@@ -55,6 +56,17 @@
       bottom: 1.5rem;
       left: 1.5rem;
       z-index: 10;
+    }
+
+    /* Mobile fix: prevent overlap but keep tilt */
+    @media (max-width: 700px) {
+      .back-link {
+        position: static;
+        display: block;
+        margin: 2rem auto 0 auto;
+        transform: rotate(2deg); /* tilt restored */
+        text-align: center;
+      }
     }
   </style>
 </head>
