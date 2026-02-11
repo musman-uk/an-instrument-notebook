@@ -17,11 +17,11 @@
       position: relative;
     }
 
-    /* Sticky‑note style About link (fixed + tilt) */
+    /* Sticky‑note style About link (fixed + tilt, now top-right) */
     .about-link {
       position: fixed;
-      bottom: 1.5rem;
-      left: 1.5rem;
+      top: 1.5rem;
+      right: 1.5rem;
       background: #ffeeb0;
       border: 1px solid #d8cfa0;
       box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
@@ -36,8 +36,8 @@
     /* Mobile refinement: keep tilt, adjust spacing */
     @media (max-width: 700px) {
       .about-link {
-        bottom: 1rem;
-        left: 1rem;
+        top: 1rem;
+        right: 1rem;
         padding: 0.5rem 0.9rem;
         transform: rotate(2deg);
       }
