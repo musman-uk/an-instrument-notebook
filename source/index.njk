@@ -98,14 +98,8 @@
       text-decoration: none;
       color: #F2C6B4;
       backdrop-filter: blur(3px);
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
       text-shadow: 0 0 6px rgba(242,198,180,0.25);
-    }
-
-    .studio-card:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.12);
-      box-shadow: 0 0 14px rgba(122,95,255,0.45);
+      /* hover removed — cards remain still */
     }
 
     .studio-title {
@@ -134,18 +128,20 @@
   </div>
 
   <div class="top-bar">
-    <a class="prelude-link" href="prelude/">Prelude</a>
+    <a class="prelude-link" href="/prelude/">Prelude</a>
   </div>
 
   <div class="title">Instrumental Notes</div>
 
   <div class="studio-sections">
-    {% for group in collections.instrumentGroups %}
-      <a href="{{ group.url }}" class="studio-card">
-        <div class="studio-title">{{ group.data.title }}</div>
-        <div class="studio-desc">{{ group.data.description }}</div>
-      </a>
+
+    {% for note in collections.notes %}
+      <div class="studio-card">
+        <div class="studio-title">{{ note.data.emoji }} {{ note.data.title }}</div>
+        <div class="studio-desc">{{ note.data.description }}</div>
+      </div>
     {% endfor %}
+
   </div>
 
 </body>
