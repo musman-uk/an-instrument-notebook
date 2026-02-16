@@ -2,6 +2,7 @@
 title: Drums
 emoji: 🥁
 description: The heartbeat of rhythm, found in every culture.
+permalink: false
 ---
 
 🥁 **Drums**
