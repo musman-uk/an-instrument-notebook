@@ -2,6 +2,7 @@
 title: Acoustic Guitar
 emoji: 🎸
 description: A warm, resonant instrument shaped by wood, tension, and touch.
+permalink: false
 ---
 
 🎸 **Acoustic Guitar**
