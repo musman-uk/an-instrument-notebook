@@ -3,267 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seasonal Notes</title>
+
+  <title>Instrumental Notes</title>
 
   <style>
-    /* Page background */
     body {
-      font-family: "Bradley Hand", cursive;
-      background: #dcdad6; /* updated neutral background */
-      color: #222;
       margin: 0;
-      padding: 1.2rem;
-      line-height: 1.6;
-      position: relative;
-    }
-
-    /* Sticky‑note style About link (fixed + tilt, now top-right) */
-    .about-link {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: #ffeeb0;
-      border: 1px solid #d8cfa0;
-      box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
-      padding: 0.6rem 1rem;
-      transform: rotate(2deg);
-      font-family: "Bradley Hand", cursive;
-      text-decoration: none;
-      color: #1a4b8c;
-      z-index: 20;
-    }
-
-    /* Mobile refinement: keep tilt, adjust spacing */
-    @media (max-width: 700px) {
-      .about-link {
-        top: 1rem;
-        right: 1rem;
-        padding: 0.5rem 0.9rem;
-        transform: rotate(2deg);
-      }
-    }
-
-    /* Sticky‑note title */
-    .title-card {
-      background: #ffeeb0;
-      border: 1px solid #d8cfa0;
-      box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
-      color: #1a4b8c;
-      padding: 1rem 2rem;
-      font-size: 2rem;
-      width: fit-content;
-      margin: 0 auto 2.5rem auto;
-      transform: rotate(-1deg);
-      letter-spacing: 1px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Grid layout */
-    .seasons-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Season block base */
-    .season-block {
-      padding: 2rem;
-      border-radius: 6px;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      color: #1a4b8c;
-    }
-
-    /* SPRING */
-    .spring {
-      background: #e6f7e6;
-      --tilt: -1deg;
-    }
-    .spring::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+      padding: 2rem 1.5rem;
       background:
-        radial-gradient(circle at 20% 30%, rgba(150,255,180,0.55), transparent 70%),
-        radial-gradient(circle at 80% 70%, rgba(255,180,220,0.45), transparent 70%),
-        radial-gradient(circle at 50% 50%, rgba(200,255,220,0.35), transparent 75%),
-        radial-gradient(circle at 30% 80%, rgba(180,240,200,0.35), transparent 75%);
-      z-index: 1;
-    }
-    .spring::after {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(255,200,230,0.30), transparent 70%),
-        radial-gradient(circle at 90% 20%, rgba(180,255,210,0.30), transparent 70%),
-        radial-gradient(circle at 20% 90%, rgba(220,255,230,0.30), transparent 70%);
-      z-index: 0;
-    }
-
-    /* SUMMER */
-    .summer {
-      background: #ffe8b8;
-      --tilt: 1deg;
-    }
-    .summer::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,240,120,0.55), transparent 70%),
-        radial-gradient(circle at 70% 80%, rgba(255,170,140,0.45), transparent 70%),
-        radial-gradient(circle at 50% 50%, rgba(255,210,160,0.35), transparent 75%),
-        radial-gradient(circle at 20% 60%, rgba(180,220,255,0.25), transparent 75%);
-      z-index: 1;
-    }
-    .summer::after {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(255,235,150,0.30), transparent 70%),
-        radial-gradient(circle at 85% 10%, rgba(255,180,140,0.30), transparent 70%),
-        radial-gradient(circle at 10% 85%, rgba(255,200,160,0.30), transparent 70%);
-      z-index: 0;
-    }
-
-    /* AUTUMN */
-    .autumn {
-      background: #f5d2b0;
-      --tilt: -1deg;
-    }
-    .autumn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 80%, rgba(200,110,50,0.55), transparent 70%),
-        radial-gradient(circle at 80% 20%, rgba(230,140,70,0.45), transparent 70%),
-        radial-gradient(circle at 50% 50%, rgba(180,90,40,0.35), transparent 75%),
-        radial-gradient(circle at 60% 60%, rgba(120,70,30,0.25), transparent 75%);
-      z-index: 1;
-    }
-    .autumn::after {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      background:
-        radial-gradient(circle at 12% 20%, rgba(210,130,70,0.30), transparent 70%),
-        radial-gradient(circle at 88% 18%, rgba(180,90,50,0.30), transparent 70%),
-        radial-gradient(circle at 18% 88%, rgba(230,150,90,0.30), transparent 70%);
-      z-index: 0;
-    }
-
-    /* WINTER */
-    .winter {
-      background: #e2f0ff;
-      --tilt: 1deg;
-    }
-    .winter::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 10%, rgba(180,220,255,0.55), transparent 70%),
-        radial-gradient(circle at 30% 90%, rgba(200,240,255,0.45), transparent 70%),
-        radial-gradient(circle at 50% 50%, rgba(210,235,255,0.35), transparent 75%),
-        radial-gradient(circle at 70% 40%, rgba(200,190,255,0.25), transparent 75%);
-      z-index: 1;
-    }
-    .winter::after {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(200,230,255,0.30), transparent 70%),
-        radial-gradient(circle at 85% 12%, rgba(170,210,245,0.30), transparent 70%),
-        radial-gradient(circle at 12% 88%, rgba(210,235,255,0.30), transparent 70%);
-      z-index: 0;
-    }
-
-    /* Notes */
-    .note {
-      background: #ffeeb0;
-      border: 1px solid #d8cfa0;
-      box-shadow: 3px 4px 7px rgba(0,0,0,0.2);
-      padding: 0.3rem;
-      width: 100px;
-      font-size: 0.65rem;
-      transform: rotate(-3deg);
-      margin: 0.25rem;
-      opacity: 0;
-      color: #1a4b8c;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      position: relative;
-      z-index: 2;
-    }
-
-    .note.visible {
-      opacity: 1;
-      transform: rotate(var(--tilt-note, -1deg));
-    }
-
-    .notes-wrap {
+        radial-gradient(circle at 20% 30%, rgba(255,111,97,0.35), transparent 65%),
+        radial-gradient(circle at 80% 70%, rgba(201,75,123,0.35), transparent 65%),
+        radial-gradient(circle at 50% 10%, rgba(122,95,255,0.25), transparent 70%),
+        linear-gradient(160deg, #05070D, #0A0F1F, #1C2541);
+      color: #F2C6B4;
+      font-family: "Cormorant Garamond", serif;
+      min-height: 100vh;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      position: relative;
-      z-index: 2;
+      flex-direction: column;
+      align-items: center;
     }
 
-    @media (max-width: 700px) {
-      .seasons-grid {
-        grid-template-columns: 1fr;
-      }
-      .season-block {
-        transform: rotate(0deg);
-      }
+    /* Top-left musical arpeggio */
+    .note-cluster {
+      position: fixed;
+      top: 1.2rem;
+      left: 1.2rem;
+      display: flex;
+      flex-direction: row;
+      gap: 0.35rem;
+      pointer-events: none;
+    }
+
+    .note {
+      font-size: 1.35rem;
+      color: #FF6F61;
+      text-shadow: 0 0 12px rgba(255,111,97,0.7);
+      line-height: 1;
+    }
+
+    /* Top bar containing Prelude */
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Prelude link with neon coral glow */
+    .prelude-link {
+      text-decoration: none;
+      color: #FF6F61;
+      padding: 0.45rem 1rem;
+      border-radius: 4px;
+      background: rgba(255,111,97,0.12);
+      border: 1px solid rgba(255,111,97,0.45);
+      box-shadow: 0 0 10px rgba(255,111,97,0.55);
+      font-size: 0.95rem;
+      letter-spacing: 0.6px;
+      backdrop-filter: blur(4px);
+      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    }
+
+    .prelude-link:hover {
+      background: rgba(255,111,97,0.25);
+      box-shadow: 0 0 16px rgba(255,111,97,0.75);
+      transform: translateY(-2px);
+    }
+
+    /* Title */
+    .title {
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+      color: #FF6F61;
+      text-shadow: 0 0 16px rgba(255,111,97,0.75);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    /* Instrument sections */
+    .studio-sections {
+      max-width: 700px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .studio-card {
+      padding: 1.4rem 1.2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      text-decoration: none;
+      color: #F2C6B4;
+      backdrop-filter: blur(3px);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      text-shadow: 0 0 6px rgba(242,198,180,0.25);
+    }
+
+    .studio-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 0 14px rgba(122,95,255,0.45);
+    }
+
+    .studio-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.2rem;
+      color: #F2C6B4;
+      text-shadow: 0 0 8px rgba(242,198,180,0.35);
+    }
+
+    .studio-desc {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      color: #F2C6B4;
+      text-shadow: 0 0 6px rgba(242,198,180,0.25);
     }
   </style>
 </head>
 
 <body>
 
-  <a class="about-link" href="about/">About</a>
-
-  <div class="title-card">Seasonal Notes</div>
-
-  <div class="seasons-grid">
-
-    {% for season in ["spring", "summer", "autumn", "winter"] %}
-      <div class="season-block {{ season }}">
-        <div class="season-title">{{ season | capitalize }}</div>
-
-        <div class="notes-wrap">
-          {% for note in collections.notes %}
-            {% if note.data.season == season %}
-              <div class="note">
-                {{ note.templateContent | safe }}
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
-
+  <!-- Musical arpeggio in top-left -->
+  <div class="note-cluster">
+    <div class="note">♫</div>
+    <div class="note">♪</div>
+    <div class="note">♫</div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const notes = document.querySelectorAll(".note");
-      notes.forEach((note, i) => {
-        const delay = 200 + i * 120;
-        setTimeout(() => {
-          note.classList.add("visible");
-        }, delay);
-      });
-    });
-  </script>
+  <div class="top-bar">
+    <a class="prelude-link" href="prelude/">Prelude</a>
+  </div>
+
+  <div class="title">Instrumental Notes</div>
+
+  <div class="studio-sections">
+    {% for group in collections.instrumentGroups %}
+      <a href="{{ group.url }}" class="studio-card">
+        <div class="studio-title">{{ group.data.title }}</div>
+        <div class="studio-desc">{{ group.data.description }}</div>
+      </a>
+    {% endfor %}
+  </div>
 
 </body>
 </html>
