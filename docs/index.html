@@ -7,15 +7,19 @@
   <title>Instrumental Notes</title>
 
   <style>
+    :root {
+      --coral: #FF6F61;
+      --lavender: #B3AEDF;
+    }
+
     body {
       margin: 0;
       padding: 2rem 1.5rem;
       background:
-        radial-gradient(circle at 20% 30%, rgba(255,111,97,0.35), transparent 65%),
-        radial-gradient(circle at 80% 70%, rgba(201,75,123,0.35), transparent 65%),
-        radial-gradient(circle at 50% 10%, rgba(122,95,255,0.25), transparent 70%),
+        radial-gradient(circle at 20% 30%, rgba(255,111,97,0.25), transparent 65%),
+        radial-gradient(circle at 80% 70%, rgba(122,95,255,0.25), transparent 65%),
         linear-gradient(160deg, #05070D, #0A0F1F, #1C2541);
-      color: #F2C6B4;
+      color: var(--lavender);
       font-family: "Cormorant Garamond", serif;
       min-height: 100vh;
       display: flex;
@@ -23,37 +27,36 @@
       align-items: center;
     }
 
-    /* Top-left musical arpeggio */
+    /* Musical notes — EXACTLY like Prelude */
     .note-cluster {
-      position: fixed;
-      top: 1.2rem;
-      left: 1.2rem;
       display: flex;
-      flex-direction: row;
       gap: 0.35rem;
-      pointer-events: none;
+      margin-bottom: 1rem;
+      justify-content: center;
     }
 
     .note {
       font-size: 1.35rem;
-      color: #FF6F61;
-      text-shadow: 0 0 12px rgba(255,111,97,0.7);
+      color: var(--lavender);
+      text-shadow: 0 0 12px rgba(199,196,226,0.7);
       line-height: 1;
     }
 
-    /* Top bar containing Prelude */
+    /* Top bar — Prelude link fixed top-right across devices */
     .top-bar {
-      width: 100%;
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 20;
+
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      margin-bottom: 2rem;
     }
 
-    /* Prelude link with neon coral glow */
     .prelude-link {
       text-decoration: none;
-      color: #FF6F61;
+      color: var(--coral);
       padding: 0.45rem 1rem;
       border-radius: 4px;
       background: rgba(255,111,97,0.12);
@@ -75,8 +78,9 @@
     .title {
       font-size: 2.8rem;
       letter-spacing: 1px;
-      color: #FF6F61;
-      text-shadow: 0 0 16px rgba(255,111,97,0.75);
+      color: var(--coral);
+      text-shadow: 0 0 18px rgba(255,111,97,0.85);
+      margin-top: 4.5rem; /* spacing to compensate for fixed top bar */
       margin-bottom: 2.5rem;
       text-align: center;
     }
@@ -90,37 +94,43 @@
       gap: 1.4rem;
     }
 
+    /* CONTENT NOTES — blackish sound panel + coral glow */
     .studio-card {
       padding: 1.4rem 1.2rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
+
+      /* blackish-blue sound panel */
+      background: rgba(10, 15, 30, 0.55);
+      border: 1px solid rgba(255,111,97,0.25);
       border-radius: 6px;
+      backdrop-filter: blur(4px);
+
+      /* coral glow */
+      box-shadow: 0 0 18px rgba(255,111,97,0.18);
+
       text-decoration: none;
-      color: #F2C6B4;
-      backdrop-filter: blur(3px);
-      text-shadow: 0 0 6px rgba(242,198,180,0.25);
-      /* hover removed — cards remain still */
+      color: var(--lavender);
+      text-shadow: 0 0 6px rgba(199,196,226,0.25);
     }
 
     .studio-title {
       font-size: 1.4rem;
       margin-bottom: 0.2rem;
-      color: #F2C6B4;
-      text-shadow: 0 0 8px rgba(242,198,180,0.35);
+      color: var(--coral);
+      text-shadow: 0 0 12px rgba(255,111,97,0.55);
     }
 
     .studio-desc {
       font-size: 0.9rem;
-      opacity: 0.85;
-      color: #F2C6B4;
-      text-shadow: 0 0 6px rgba(242,198,180,0.25);
+      opacity: 0.9;
+      color: var(--lavender);
+      text-shadow: 0 0 6px rgba(199,196,226,0.25);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Musical arpeggio in top-left -->
+  <!-- Musical notes — centered like Prelude -->
   <div class="note-cluster">
     <div class="note">♫</div>
     <div class="note">♪</div>
