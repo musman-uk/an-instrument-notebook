@@ -2,17 +2,5 @@
 title: "Steel‑String Acoustic Guitar"
 image: "placeholder"
 description: >
-  Born in 19th‑century America, the steel‑string acoustic guitar emerged from folk traditions and the need for a brighter, more projecting voice.
+  The steel‑string acoustic took shape in 19th century America when C. F. Martin reworked older European guitars to survive the pull of metal strings. That change gave the instrument a more cutting voice, something that early blues and country musicians relied on when they needed a sound that would not disappear in a crowded room. In the modern world it sits in writing spaces and small studios, still chosen by players who want an instrument that can carry a simple idea with clarity while leaving enough room for a voice to speak plainly above it.
 ---
-
-## Origins  
-The steel‑string acoustic guitar took shape in the mid‑1800s in the United States, shaped by the innovations of Christian Frederick Martin, who adapted European gut‑string instruments for American musical needs.
-
-## Cultural Roots  
-It grew alongside folk, blues, and early country music, becoming a companion to travelling musicians and storytellers. Its steel strings gave it a sharper, more carrying tone suited to open spaces and rhythmic accompaniment.
-
-## Character  
-Bright, resonant, and open‑voiced, the steel‑string acoustic carries melody and rhythm with equal ease – a sound shaped by movement, travel, and lived experience.
-
-## Image  
-*Image placeholder – illustration to be added later.*
