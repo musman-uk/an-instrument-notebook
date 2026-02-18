@@ -3,5 +3,5 @@ title: "Steel‑String Acoustic Guitar"
 image: "placeholder"
 permalink: false
 description: >
-  The steel‑string acoustic took shape in 19th century America when C. F. Martin reworked older European guitars to survive the pull of metal strings. That change gave the instrument a more cutting voice, something that early blues and country musicians relied on when they needed a sound that would not disappear in a crowded room. In the modern world it sits in writing spaces and small studios, still chosen by players who want an instrument that can carry a simple idea with clarity while leaving enough room for a voice to speak plainly above it.
+  The steel‑string acoustic took shape in 19th century America when C. F. Martin rebuilt older European guitars to withstand the pull of metal strings. That shift created a louder, grittier sound that matched the needs of early blues and folk musicians who wanted an instrument that could carry their stories without getting lost in the noise around them. In the modern world it moves easily between genres, still chosen for the way it can hold a simple idea steady and give a song its backbone.
 ---
