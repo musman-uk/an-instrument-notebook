@@ -5,9 +5,12 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByGlob("source/content/instruments/**/*.md");
   });
 
+  // Copy assets (images, sounds) into docs/
+  eleventyConfig.addPassthroughCopy("source/assets");
+
   return {
     dir: {
-      input: "source",   
+      input: "source",
       output: "docs"
     }
   };
