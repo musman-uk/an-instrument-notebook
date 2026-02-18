@@ -13,6 +13,11 @@
       --lavender: #B3AEDF;
     }
 
+    /* Disable overscroll bounce on mobile */
+    html, body {
+      overscroll-behavior: none;
+    }
+
     body {
       margin: 0;
       padding: 2rem 1.5rem;
@@ -23,36 +28,23 @@
       color: var(--lavender);
       font-family: "Cormorant Garamond", serif;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      overflow-x: hidden;
+      display: block;
     }
 
-    /* Musical notes — EXACTLY like Prelude */
-    .note-cluster {
-      display: flex;
-      gap: 0.35rem;
-      margin-bottom: 1rem;
-      justify-content: center;
+    /* PAGE WRAPPER — centers content without breaking layout */
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .note {
-      font-size: 1.35rem;
-      color: var(--lavender);
-      text-shadow: 0 0 12px rgba(199,196,226,0.7);
-      line-height: 1;
-    }
-
-    /* Top bar — Prelude link fixed top-right across devices */
+    /* Prelude link */
     .top-bar {
-      position: fixed;
-      top: 1.2rem;
-      right: 1.2rem;
-      z-index: 20;
-
+      width: 100%;
       display: flex;
       justify-content: flex-end;
-      align-items: center;
+      margin-bottom: 1.4rem;
+      transform: translateY(-1.2rem); /* cleaner than negative margin */
     }
 
     .prelude-link {
@@ -75,35 +67,52 @@
       transform: translateY(-2px);
     }
 
+    /* Musical notes */
+    .note-cluster {
+      display: flex;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .note {
+      font-size: 1.35rem;
+      color: var(--lavender);
+      text-shadow: 0 0 12px rgba(199,196,226,0.7);
+      line-height: 1;
+    }
+
     /* Title */
     .title {
       font-size: 2.8rem;
       letter-spacing: 1px;
       color: var(--coral);
       text-shadow: 0 0 18px rgba(255,111,97,0.85);
-      margin-top: 4.5rem; /* spacing to compensate for fixed top bar */
       margin-bottom: 2.5rem;
       text-align: center;
+      width: 100%;
     }
 
     /* Instrument sections */
     .studio-sections {
-      max-width: 700px;
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 1.4rem;
     }
 
-    /* CONTENT NOTES — blackish sound panel + coral glow */
+    /* Card */
     .studio-card {
-      padding: 1.4rem 1.2rem;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
 
+      padding: 1.4rem 1.2rem;
       background: rgba(10, 15, 30, 0.55);
       border: 1px solid rgba(255,111,97,0.25);
       border-radius: 6px;
       backdrop-filter: blur(4px);
-
       box-shadow: 0 0 18px rgba(255,111,97,0.18);
 
       text-decoration: none;
@@ -111,7 +120,7 @@
       text-shadow: 0 0 6px rgba(199,196,226,0.25);
     }
 
-    /* Responsive instrument image */
+    /* Image */
     .instrument-image {
       width: 100%;
       max-width: 180px;
@@ -141,48 +150,55 @@
 
 <body>
 
-  <!-- Musical notes — centered like Prelude -->
-  <div class="note-cluster">
-    <div class="note">♫</div>
-    <div class="note">♪</div>
-    <div class="note">♫</div>
-  </div>
+  <div class="page">
 
-  <div class="top-bar">
-    <a class="prelude-link" href="/prelude/">Prelude</a>
-  </div>
+    <!-- Prelude link -->
+    <div class="top-bar">
+      <a class="prelude-link" href="/prelude/">Prelude</a>
+    </div>
 
-  <div class="title">Instrumental Notes</div>
+    <!-- Musical notes -->
+    <div class="note-cluster">
+      <div class="note">♫</div>
+      <div class="note">♪</div>
+      <div class="note">♫</div>
+    </div>
 
-  <div class="studio-sections">
+    <!-- Title -->
+    <div class="title">Instrumental Notes</div>
 
-    
-      <div class="studio-card">
+    <!-- Cards -->
+    <div class="studio-sections">
 
-        <img 
-          src="assets/images/placeholder.png" 
-          alt="Spanish Classical Guitar" 
-          class="instrument-image"
-        />
+      
+        <div class="studio-card">
 
-        <div class="studio-title"> Spanish Classical Guitar</div>
-        <div class="studio-desc">Preceded by Iberian craft, the Spanish Classical Guitar emerged in the 19th century when Antonio Torres built it with gut strings, later replaced by nylon, that gave the guitar a softer and brighter sound and became a central part of Spanish classical music and the pulse of flamenco. Today it features across many cultures, and is something that reveals more of its beauty the longer you spend with it.
+          <img 
+            src="assets/images/placeholder.png" 
+            alt="Spanish Classical Guitar" 
+            class="instrument-image"
+          />
+
+          <div class="studio-title"> Spanish Classical Guitar</div>
+          <div class="studio-desc">Preceded by Iberian craft, the Spanish Classical Guitar emerged in the 19th century when Antonio Torres built it with gut strings, later replaced by nylon, that gave the guitar a softer and brighter sound and became a central part of Spanish classical music and the pulse of flamenco. Today it features across many cultures, and is something that reveals more of its beauty the longer you spend with it.
 </div>
-      </div>
-    
-      <div class="studio-card">
+        </div>
+      
+        <div class="studio-card">
 
-        <img 
-          src="assets/images/placeholder.png" 
-          alt="Steel‑String Acoustic Guitar" 
-          class="instrument-image"
-        />
+          <img 
+            src="assets/images/placeholder.png" 
+            alt="Steel‑String Acoustic Guitar" 
+            class="instrument-image"
+          />
 
-        <div class="studio-title"> Steel‑String Acoustic Guitar</div>
-        <div class="studio-desc">The steel‑string acoustic took shape in 19th century America when C. F. Martin rebuilt older European guitars to withstand the pull of metal strings. That shift created a louder, grittier sound that matched the needs of early blues and folk musicians who wanted an instrument that could carry their stories. In the modern world it moves easily between genres, but remains just as impactful.
+          <div class="studio-title"> Steel‑String Acoustic Guitar</div>
+          <div class="studio-desc">The steel‑string acoustic took shape in 19th century America when C. F. Martin rebuilt older European guitars to withstand the pull of metal strings. That shift created a louder, grittier sound that matched the needs of early blues and folk musicians who wanted an instrument that could carry their stories. In the modern world it moves easily between genres, but remains just as impactful.
 </div>
-      </div>
-    
+        </div>
+      
+
+    </div>
 
   </div>
 
