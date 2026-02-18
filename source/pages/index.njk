@@ -102,18 +102,28 @@ permalink: "index.html"
     .studio-card {
       padding: 1.4rem 1.2rem;
 
-      /* blackish-blue sound panel */
       background: rgba(10, 15, 30, 0.55);
       border: 1px solid rgba(255,111,97,0.25);
       border-radius: 6px;
       backdrop-filter: blur(4px);
 
-      /* coral glow */
       box-shadow: 0 0 18px rgba(255,111,97,0.18);
 
       text-decoration: none;
       color: var(--lavender);
       text-shadow: 0 0 6px rgba(199,196,226,0.25);
+    }
+
+    /* Responsive instrument image */
+    .instrument-image {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 1rem auto;
+      border-radius: 4px;
+      opacity: 0.95;
     }
 
     .studio-title {
@@ -151,6 +161,13 @@ permalink: "index.html"
 
     {% for note in collections.notes %}
       <div class="studio-card">
+
+        <img 
+          src="/assets/images/{{ note.data.image }}" 
+          alt="{{ note.data.title }}" 
+          class="instrument-image"
+        />
+
         <div class="studio-title">{{ note.data.emoji }} {{ note.data.title }}</div>
         <div class="studio-desc">{{ note.data.description }}</div>
       </div>
