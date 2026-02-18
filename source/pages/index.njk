@@ -180,6 +180,7 @@ permalink: "index.html"
             src="assets/images/{{ note.data.image }}" 
             alt="{{ note.data.title }}" 
             class="instrument-image"
+            data-sound="assets/sounds/placeholder.mp3"
           />
 
           <div class="studio-title">{{ note.data.emoji }} {{ note.data.title }}</div>
@@ -190,6 +191,35 @@ permalink: "index.html"
     </div>
 
   </div>
+
+  <!-- Sound playback script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll(".instrument-image");
+
+      images.forEach(img => {
+        let lastTap = 0;
+
+        const audio = new Audio(img.dataset.sound);
+
+        // Desktop double-click
+        img.addEventListener("dblclick", () => {
+          audio.currentTime = 0;
+          audio.play();
+        });
+
+        // Mobile double-tap
+        img.addEventListener("touchend", () => {
+          const now = Date.now();
+          if (now - lastTap < 300) {
+            audio.currentTime = 0;
+            audio.play();
+          }
+          lastTap = now;
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
