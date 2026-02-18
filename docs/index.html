@@ -99,18 +99,28 @@
     .studio-card {
       padding: 1.4rem 1.2rem;
 
-      /* blackish-blue sound panel */
       background: rgba(10, 15, 30, 0.55);
       border: 1px solid rgba(255,111,97,0.25);
       border-radius: 6px;
       backdrop-filter: blur(4px);
 
-      /* coral glow */
       box-shadow: 0 0 18px rgba(255,111,97,0.18);
 
       text-decoration: none;
       color: var(--lavender);
       text-shadow: 0 0 6px rgba(199,196,226,0.25);
+    }
+
+    /* Responsive instrument image */
+    .instrument-image {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 1rem auto;
+      border-radius: 4px;
+      opacity: 0.95;
     }
 
     .studio-title {
@@ -148,14 +158,28 @@
 
     
       <div class="studio-card">
+
+        <img 
+          src="/assets/images/placeholder.png" 
+          alt="Spanish Classical Guitar" 
+          class="instrument-image"
+        />
+
         <div class="studio-title"> Spanish Classical Guitar</div>
-        <div class="studio-desc">The Spanish classical guitar carries a long line of Iberian craft, but it found its modern shape in the 19th century when Antonio Torres settled its proportions and gave it the voice players still recognise today. His instruments were built for gut strings, later replaced by nylon, which gave the guitar a softer and more intimate sound that responds to the smallest shift in the fingers. It became a central part of Spanish classical music and the pulse of flamenco, shaped by musicians who learned its language slowly, through repetition and memory. Today it is still chosen by people who want an instrument that answers to a gentle touch more than anything else, something that reveals its character only when you sit with it long enough to hear what it is trying to say.
+        <div class="studio-desc">Preceded by Iberian craft, the Spanish Classical Guitar emerged in the 19th century when Antonio Torres built it with gut strings, later replaced by nylon, that gave the guitar a softer and brighter sound and became a central part of Spanish classical music and the pulse of flamenco. Today it features across many cultures, and is something that reveals more of its beauty the longer you spend with it.
 </div>
       </div>
     
       <div class="studio-card">
+
+        <img 
+          src="/assets/images/placeholder.png" 
+          alt="Steel‑String Acoustic Guitar" 
+          class="instrument-image"
+        />
+
         <div class="studio-title"> Steel‑String Acoustic Guitar</div>
-        <div class="studio-desc">The steel‑string acoustic took shape in 19th century America when C. F. Martin reworked older European guitars to survive the pull of metal strings. That change gave the instrument a more cutting voice, something that early blues and country musicians relied on when they needed a sound that would not disappear in a crowded room. In the modern world it sits in writing spaces and small studios, still chosen by players who want an instrument that can carry a simple idea with clarity while leaving enough room for a voice to speak plainly above it.
+        <div class="studio-desc">The steel‑string acoustic took shape in 19th century America when C. F. Martin rebuilt older European guitars to withstand the pull of metal strings. That shift created a louder, grittier sound that matched the needs of early blues and folk musicians who wanted an instrument that could carry their stories. In the modern world it moves easily between genres, but remains just as impactful.
 </div>
       </div>
     
