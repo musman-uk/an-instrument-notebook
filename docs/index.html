@@ -177,6 +177,7 @@
             src="assets/images/placeholder.png" 
             alt="Spanish Classical Guitar" 
             class="instrument-image"
+            data-sound="assets/sounds/placeholder.mp3"
           />
 
           <div class="studio-title"> Spanish Classical Guitar</div>
@@ -190,6 +191,7 @@
             src="assets/images/placeholder.png" 
             alt="Steel‑String Acoustic Guitar" 
             class="instrument-image"
+            data-sound="assets/sounds/placeholder.mp3"
           />
 
           <div class="studio-title"> Steel‑String Acoustic Guitar</div>
@@ -201,6 +203,35 @@
     </div>
 
   </div>
+
+  <!-- Sound playback script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll(".instrument-image");
+
+      images.forEach(img => {
+        let lastTap = 0;
+
+        const audio = new Audio(img.dataset.sound);
+
+        // Desktop double-click
+        img.addEventListener("dblclick", () => {
+          audio.currentTime = 0;
+          audio.play();
+        });
+
+        // Mobile double-tap
+        img.addEventListener("touchend", () => {
+          const now = Date.now();
+          if (now - lastTap < 300) {
+            audio.currentTime = 0;
+            audio.play();
+          }
+          lastTap = now;
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
