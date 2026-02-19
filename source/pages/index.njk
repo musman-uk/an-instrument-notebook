@@ -100,8 +100,8 @@ permalink: "index.html"
     /* Instrument sections */
     .studio-sections {
       width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 1.4rem;
     }
 
@@ -110,7 +110,6 @@ permalink: "index.html"
       width: 100%;
       box-sizing: border-box;
       overflow: hidden;
-      aspect-ratio: 4 / 3;
 
       padding: 1.4rem 1.2rem;
       background: rgba(10, 15, 30, 0.55);
@@ -184,7 +183,7 @@ permalink: "index.html"
             data-sound="assets/sounds/placeholder.mp3"
           />
 
-          <div class="studio-title">{{ note.data.emoji }} {{ note.data.title }}</div>
+          <div class="studio-title">{{ note.data.title }}</div>
           <div class="studio-desc">{{ note.data.description }}</div>
         </div>
       {% endfor %}
