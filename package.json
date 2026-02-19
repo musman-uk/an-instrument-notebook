@@ -1,7 +1,7 @@
 {
-  "name": "seasonal-notes",
+  "name": "instrumental-notes",
   "version": "1.0.0",
-  "description": "A small, artsy static site of seasonal reflections.",
+  "description": "A small, CMS style static site of instrumental notes.",
   "scripts": {
     "build": "eleventy",
     "start": "eleventy --serve"
