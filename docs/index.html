@@ -97,8 +97,8 @@
     /* Instrument sections */
     .studio-sections {
       width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 1.4rem;
     }
 
@@ -107,7 +107,6 @@
       width: 100%;
       box-sizing: border-box;
       overflow: hidden;
-      aspect-ratio: 4 / 3;
 
       padding: 1.4rem 1.2rem;
       background: rgba(10, 15, 30, 0.55);
@@ -181,7 +180,7 @@
             data-sound="assets/sounds/placeholder.mp3"
           />
 
-          <div class="studio-title"> Spanish Classical Guitar</div>
+          <div class="studio-title">Spanish Classical Guitar</div>
           <div class="studio-desc">Preceded by Iberian craft, the Spanish Classical Guitar emerged in the 19th century when Antonio Torres built it with gut strings, later replaced by nylon, that gave the guitar a softer and brighter sound and became a central part of Spanish classical music and the pulse of flamenco. Today it features across many cultures, and is something that reveals more of its beauty the longer you spend with it.
 </div>
         </div>
@@ -195,7 +194,7 @@
             data-sound="assets/sounds/placeholder.mp3"
           />
 
-          <div class="studio-title"> Steel‑String Acoustic Guitar</div>
+          <div class="studio-title">Steel‑String Acoustic Guitar</div>
           <div class="studio-desc">The steel‑string acoustic took shape in 19th century America when C. F. Martin rebuilt older European guitars to withstand the pull of metal strings. That shift created a louder, grittier sound that matched the needs of early blues and folk musicians who wanted an instrument that could carry their stories. In the modern world it moves easily between genres, but remains just as impactful.
 </div>
         </div>
