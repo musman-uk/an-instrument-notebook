@@ -47,7 +47,7 @@ permalink: "index.html"
       display: flex;
       justify-content: flex-end;
       margin-bottom: 1.4rem;
-      transform: translateY(-1.2rem); /* cleaner than negative margin */
+      transform: translateY(-1.2rem);
     }
 
     .prelude-link {
@@ -99,17 +99,16 @@ permalink: "index.html"
 
     /* Instrument sections */
     .studio-sections {
-      width: 100%;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.4rem;
     }
 
-    /* Card */
     .studio-card {
-      width: 100%;
+      flex: 1 1 220px;
+      max-width: 260px;
       box-sizing: border-box;
-      overflow: hidden;
 
       padding: 1.4rem 1.2rem;
       background: rgba(10, 15, 30, 0.55);
@@ -126,7 +125,7 @@ permalink: "index.html"
     /* Image */
     .instrument-image {
       width: 100%;
-      max-width: 180px;
+      max-width: 200px;
       height: auto;
       object-fit: contain;
       display: block;
@@ -140,6 +139,7 @@ permalink: "index.html"
       margin-bottom: 0.2rem;
       color: var(--coral);
       text-shadow: 0 0 12px rgba(255,111,97,0.55);
+      text-align: center;
     }
 
     .studio-desc {
@@ -147,6 +147,7 @@ permalink: "index.html"
       opacity: 0.9;
       color: var(--lavender);
       text-shadow: 0 0 6px rgba(199,196,226,0.25);
+      text-align: center;
     }
   </style>
 </head>
@@ -180,7 +181,7 @@ permalink: "index.html"
             src="assets/images/{{ note.data.image }}" 
             alt="{{ note.data.title }}" 
             class="instrument-image"
-            data-sound="assets/sounds/placeholder.mp3"
+            data-sound="assets/sounds/{{ note.data.sound }}"
           />
 
           <div class="studio-title">{{ note.data.title }}</div>
@@ -195,25 +196,43 @@ permalink: "index.html"
   <!-- Sound playback script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      let currentlyPlaying = null;
       const images = document.querySelectorAll(".instrument-image");
 
       images.forEach(img => {
         let lastTap = 0;
 
         const audio = new Audio(img.dataset.sound);
+        audio.addEventListener("error", () => {
+          console.error(`Failed to load audio: ${img.dataset.sound}`);
+        });
 
         // Desktop double-click
         img.addEventListener("dblclick", () => {
+          if (currentlyPlaying && currentlyPlaying !== audio) {
+            currentlyPlaying.pause();
+            currentlyPlaying.currentTime = 0;
+          }
           audio.currentTime = 0;
-          audio.play();
+          audio.play().catch(error => {
+            console.error("Playback failed:", error);
+          });
+          currentlyPlaying = audio;
         });
 
         // Mobile double-tap
         img.addEventListener("touchend", () => {
           const now = Date.now();
           if (now - lastTap < 300) {
+            if (currentlyPlaying && currentlyPlaying !== audio) {
+              currentlyPlaying.pause();
+              currentlyPlaying.currentTime = 0;
+            }
             audio.currentTime = 0;
-            audio.play();
+            audio.play().catch(error => {
+              console.error("Playback failed:", error);
+            });
+            currentlyPlaying = audio;
           }
           lastTap = now;
         });
