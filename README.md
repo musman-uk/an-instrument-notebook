@@ -1,6 +1,7 @@
 # Instrumental Notes
 
 This repository contains an in‑development project called **Instrumental Notes**, a website that presents instruments visually and sonically.
+
 ---
 
 ## Project Contents
