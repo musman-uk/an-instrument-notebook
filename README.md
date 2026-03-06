@@ -1,6 +1,7 @@
-# Seasonal Notes
+# Instrumental Notes
 
-This repository contains an in‑development project called **Seasonal Notes**, a small, handwritten‑feeling website that presents short reflections arranged around the four seasons of the year.
+This repository contains an in‑development project called **Instrumental Notes**, a website that presents instruments visually and sonically.
+---
 
 ## Project Contents
 
@@ -14,6 +15,8 @@ A short summary of what each part of the project contains:
 - `DEVLOG.md` – notes on changes, iterations, and build progress  
 - `DESIGN-NOTES.md` – design philosophy, layout decisions, and rationale  
 - `.github/workflows/` – automated workflow that runs the build process
+
+---
 
 ## Development Process
 
@@ -29,4 +32,10 @@ A simplified view of how the website is being developed:
 ## Status
 
 Version `0.0.0` – Draft  
-The project is in its earliest phase, with structure, templates, and seasonal note rendering being established.
+The project is in its earliest phase, with structure, templates, and note rendering being established.
+
+---
+
+<sub>© Mohammed Usman</sub>
+
+<sub>All rights reserved. No commercial use, redistribution, or modification.</sub>
