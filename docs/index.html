@@ -32,13 +32,11 @@
       display: block;
     }
 
-    /* PAGE WRAPPER — centers content without breaking layout */
     .page {
       max-width: 700px;
       margin: 0 auto;
     }
 
-    /* Prelude link */
     .top-bar {
       width: 100%;
       display: flex;
@@ -67,7 +65,6 @@
       transform: translateY(-2px);
     }
 
-    /* Musical notes */
     .note-cluster {
       display: flex;
       gap: 0.35rem;
@@ -83,18 +80,25 @@
       line-height: 1;
     }
 
-    /* Title */
     .title {
       font-size: 2.8rem;
       letter-spacing: 1px;
       color: var(--coral);
       text-shadow: 0 0 18px rgba(255,111,97,0.85);
-      margin-bottom: 2.5rem;
+      margin-bottom: 0.8rem;
       text-align: center;
       width: 100%;
     }
 
-    /* Instrument sections */
+    /* NEW: Interaction hint */
+    .hint {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 2rem;
+      color: var(--lavender);
+    }
+
     .studio-sections {
       display: flex;
       flex-wrap: wrap;
@@ -119,7 +123,6 @@
       text-shadow: 0 0 6px rgba(199,196,226,0.25);
     }
 
-    /* Image */
     .instrument-image {
       width: 100%;
       max-width: 200px;
@@ -153,22 +156,21 @@
 
   <div class="page">
 
-    <!-- Prelude link -->
     <div class="top-bar">
       <a class="prelude-link" href="./prelude/">Prelude</a>
     </div>
 
-    <!-- Musical notes -->
     <div class="note-cluster">
       <div class="note">♫</div>
       <div class="note">♪</div>
       <div class="note">♫</div>
     </div>
 
-    <!-- Title -->
     <div class="title">Instrumental Notes</div>
 
-    <!-- Cards -->
+    <!-- NEW: Interaction hint -->
+    <div class="hint">Tap twice or double‑click an instrument to hear its sound.</div>
+
     <div class="studio-sections">
 
       
@@ -205,7 +207,6 @@
 
   </div>
 
-  <!-- Sound playback script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       let currentlyPlaying = null;
@@ -215,24 +216,17 @@
         let lastTap = 0;
 
         const audio = new Audio(img.dataset.sound);
-        audio.addEventListener("error", () => {
-          console.error(`Failed to load audio: ${img.dataset.sound}`);
-        });
 
-        // Desktop double-click
         img.addEventListener("dblclick", () => {
           if (currentlyPlaying && currentlyPlaying !== audio) {
             currentlyPlaying.pause();
             currentlyPlaying.currentTime = 0;
           }
           audio.currentTime = 0;
-          audio.play().catch(error => {
-            console.error("Playback failed:", error);
-          });
+          audio.play();
           currentlyPlaying = audio;
         });
 
-        // Mobile double-tap
         img.addEventListener("touchend", () => {
           const now = Date.now();
           if (now - lastTap < 300) {
@@ -241,9 +235,7 @@
               currentlyPlaying.currentTime = 0;
             }
             audio.currentTime = 0;
-            audio.play().catch(error => {
-              console.error("Playback failed:", error);
-            });
+            audio.play();
             currentlyPlaying = audio;
           }
           lastTap = now;
