@@ -1,9 +1,5 @@
 # RECORD
 
-A consolidated technical record covering design constraints, structural decisions, development history, and planned work for **Instrumental Notes**.
-
----
-
 ## 1. Design Style
 
 ### Visual System
