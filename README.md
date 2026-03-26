@@ -9,7 +9,8 @@ This repository contains an in‑development project called **Instrumental Notes
 A short summary of what each part of the project contains:
 
 - `.github/workflows/` – automated workflow that runs the build process  
-- `docs/` – the generated static site ready for deployment  
+- `docs/` – the generated static site ready for deployment
+- `releases/` – optional snapshots of the site for versioned or archived builds    
 - `source/` – Markdown notes and Nunjucks templates used to generate the site  
 - `.eleventy.js` – Eleventy configuration defining input paths, layouts, and build behaviour  
 - `.gitignore` – patterns specifying files and directories excluded from version control  
