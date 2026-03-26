@@ -39,7 +39,7 @@ A consolidated technical record covering design constraints, structural decision
 
 ---
 
-## 2. Development Overview
+## 2. Development Process
 
 ### Content Model
 - Notes stored within instrument group folders  
