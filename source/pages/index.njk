@@ -204,6 +204,7 @@ permalink: "index.html"
         let lastTap = 0;
 
         const audio = new Audio(img.dataset.sound);
+        audio.volume = 0.20;
 
         img.addEventListener("dblclick", () => {
           if (currentlyPlaying && currentlyPlaying !== audio) {
