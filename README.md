@@ -20,7 +20,7 @@ A short summary of what each part of the project contains:
 
 ---
 
-## Development Process
+## Development Overview
 
 A simplified view of how the website is being developed:
 
