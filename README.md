@@ -8,14 +8,14 @@ This repository contains an in‑development project called **Instrumental Notes
 
 A short summary of what each part of the project contains:
 
-- `source/` – Markdown notes and Nunjucks templates used to generate the site  
+- `.github/workflows/` – automated workflow that runs the build process  
 - `docs/` – the generated static site ready for deployment  
-- `assets/` – fonts, images, and supporting files  
-- `README.md` – main overview of the project  
-- `ROADMAP.md` – planned development and future directions  
-- `DEVLOG.md` – notes on changes, iterations, and build progress  
-- `DESIGN-NOTES.md` – design philosophy, layout decisions, and rationale  
-- `.github/workflows/` – automated workflow that runs the build process
+- `source/` – Markdown notes and Nunjucks templates used to generate the site  
+- `.eleventy.js` – Eleventy configuration defining input paths, layouts, and build behaviour  
+- `.gitignore` – patterns specifying files and directories excluded from version control  
+- `README.md` – high‑level overview of the project, including purpose, structure, and development approach
+- `RECORD.md` – consolidated technical record of design constraints, development process, milestones, and roadmap  
+- `package.json` – project metadata and Node.js dependencies required for the Eleventy build
 
 ---
 
