@@ -13,7 +13,6 @@
       --lavender: #B3AEDF;
     }
 
-    /* Disable overscroll bounce on mobile */
     html, body {
       overscroll-behavior: none;
     }
@@ -168,8 +167,7 @@
 
     <div class="title">An Instrument Notebook</div>
 
-    <!-- Interaction hint -->
-    <div class="hint">Tap twice or double‑click an instrument to hear its sound.</div>
+    <div class="hint">Tap twice or double‑click an instrument to play or stop it.</div>
 
     <div class="studio-sections">
 
@@ -292,41 +290,79 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      let currentlyPlaying = null;
-      const images = document.querySelectorAll(".instrument-image");
+  document.addEventListener("DOMContentLoaded", () => {
+    let currentlyPlaying = null;
+    const images = document.querySelectorAll(".instrument-image");
 
-      images.forEach(img => {
-        let lastTap = 0;
+    const MAX_VOL = 0.20;
+    const FADE_IN = 2000;
+    const FADE_OUT = 2000;
 
-        const audio = new Audio(img.dataset.sound);
-        audio.volume = 0.20;
+    function fadeIn(audio) {
+      audio.volume = 0;
+      const start = performance.now();
+      function step(now) {
+        const p = Math.min((now - start) / FADE_IN, 1);
+        audio.volume = p * MAX_VOL;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
 
-        img.addEventListener("dblclick", () => {
-          if (currentlyPlaying && currentlyPlaying !== audio) {
-            currentlyPlaying.pause();
-            currentlyPlaying.currentTime = 0;
-          }
+    function fadeOut(audio, onDone) {
+      const start = performance.now();
+      const initial = audio.volume;
+      function step(now) {
+        const p = Math.min((now - start) / FADE_OUT, 1);
+        audio.volume = initial * (1 - p);
+        if (p < 1) {
+          requestAnimationFrame(step);
+        } else {
+          audio.pause();
           audio.currentTime = 0;
-          audio.play();
-          currentlyPlaying = audio;
-        });
+          audio.volume = MAX_VOL;
+          onDone();
+        }
+      }
+      requestAnimationFrame(step);
+    }
 
-        img.addEventListener("touchend", () => {
-          const now = Date.now();
-          if (now - lastTap < 300) {
-            if (currentlyPlaying && currentlyPlaying !== audio) {
-              currentlyPlaying.pause();
-              currentlyPlaying.currentTime = 0;
-            }
-            audio.currentTime = 0;
-            audio.play();
-            currentlyPlaying = audio;
-          }
-          lastTap = now;
+    function togglePlay(audio) {
+      if (currentlyPlaying && currentlyPlaying !== audio) {
+        fadeOut(currentlyPlaying, () => {
+          currentlyPlaying.isPlaying = false;
         });
+      }
+
+      if (!audio.isPlaying) {
+        audio.currentTime = 0;
+        audio.play();
+        fadeIn(audio);
+        audio.isPlaying = true;
+        currentlyPlaying = audio;
+      } else {
+        fadeOut(audio, () => {
+          audio.isPlaying = false;
+          currentlyPlaying = null;
+        });
+      }
+    }
+
+    images.forEach(img => {
+      let lastTap = 0;
+      const audio = new Audio(img.dataset.sound);
+      audio.volume = MAX_VOL;
+      audio.isPlaying = false;
+
+      img.addEventListener("dblclick", () => togglePlay(audio));
+
+      img.addEventListener("touchend", () => {
+        const now = Date.now();
+        if (now - lastTap < 300) togglePlay(audio);
+        lastTap = now;
       });
     });
+  });
   </script>
 
 </body>
