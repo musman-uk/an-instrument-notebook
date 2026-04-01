@@ -33,7 +33,7 @@ A simplified view of how the website is being developed:
 
 ## Status
 
-Version `0.0.0` – Draft  
+Version `0.0.0` –  Draft and Preview  
 The project is in its earliest phase, with structure, templates, and note rendering being established.
 
 ---
