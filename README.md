@@ -1,6 +1,6 @@
 # An Instrument Notebook
 
-This repository contains an in‑development project called **An Instrument Notebook** - a website that visually and sonically presents instruments, with an accompanied note.
+This repository contains an in‑development project called [An Instrument Notebook](https://musman-uk.github.io/an-instrument-notebook/) - a website that visually and sonically presents instruments, with an accompanied note.
 
 ---
 
