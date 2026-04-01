@@ -1,11 +1,12 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" href="/an-instrument-notebook/assets/images/favicon.png">
+  <link rel="icon" type="image/png" href="https://musman-uk.github.io/an-instrument-notebook/assets/images/favicon.png">
 
   <title>Prelude</title>
 
@@ -41,6 +42,9 @@
       max-width: 700px;
       margin: 0 auto;
       padding: 2rem 1.5rem;
+      min-height: calc(100vh - 4rem);
+      display: flex;
+      flex-direction: column;
     }
 
   
@@ -93,15 +97,17 @@
     .content-wrapper {
       width: 100%;
       margin: 0 auto;
-      padding-bottom: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .content {
-      font-size: 1.15rem;
+      font-size: 1rem;
       line-height: 1.55;
       color: var(--lavender);
       text-shadow: 0 0 6px rgba(199,196,226,0.25);
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
     }
 
     /* Signature */
@@ -111,7 +117,7 @@
       text-align: right;
       margin-top: 2rem;
       text-decoration: none;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .signature span {
@@ -139,9 +145,13 @@
     .license {
       position: relative;
       width: 100%;
-      font-size: 0.65rem;
+      font-size: 0.60rem;
       text-align: center;
-      margin-top: 25px;
+      margin-top: auto;
+     
+      
+  
+      
     }
 
     /* Mobile glow */
@@ -157,6 +167,7 @@
     
     .home-link {
       display: inline-block;
+      width: 170px;
       margin-top: 30px;
       margin-bottom: 30px;
       text-decoration: none;
@@ -168,6 +179,7 @@
       box-shadow: 0 0 10px rgba(255,111,97,0.55);
       font-size: 0.95rem;
       letter-spacing: 0.6px;
+      -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
       transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
     }
@@ -210,11 +222,11 @@
       
       </div>
 
-      <a class="signature" href="https://github.com/musman-uk" target="_blank">
+      <a class="signature" href="https://github.com/musman-uk" target="_blank" rel="noopener noreferrer">
         <span>Mohammed Usman</span>
       </a>
 
-      <a class="home-link" href="../">An Instrument Notebook</a>
+      <a class="home-link" href="https://musman-uk.github.io/an-instrument-notebook/">An Instrument Notebook</a>
 
       <div class="license">© Mohammed Usman<br>
     <br> All rights reserved. No commercial use, redistribution, or derivatives.
