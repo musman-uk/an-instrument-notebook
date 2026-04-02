@@ -75,19 +75,10 @@
 
 ## 4. Version History
 
-### Unreleased
-- Initial repository structure established  
-- Foundational templates and content layout added  
-- Drafted Index and Prelude content  
-- Early build and generation workflow set up (in progress)  
+### v1.0.0 — Published
+- Populated each instrument group with an initial curated set of notes  
+- Finalised colour palette and handwritten rendering behaviour  
+- Introduced optional metadata for notes (IDs, tags, ordering)  
+- Ensured Eleventy build process reliably generates the static site  
+- Prepared structure for gradual expansion of notes and instrument groups 
 
----
-
-## 5. Roadmap
-
-### v1.0.0 — First Release
-- Populate each instrument group with an initial curated set of notes  
-- Finalise colour palette and handwritten rendering behaviour  
-- Introduce optional metadata for notes (IDs, tags, ordering)  
-- Ensure Eleventy build process reliably generates the static site  
-- Prepare structure for gradual expansion of notes and instrument groups  
