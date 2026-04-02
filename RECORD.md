@@ -75,7 +75,7 @@
 
 ## 4. Version History
 
-### v1.0.0 — First Release
+### v1.0.0 — Published
 - Populated each instrument group with an initial curated set of notes  
 - Finalised colour palette and handwritten rendering behaviour  
 - Introduced optional metadata for notes (IDs, tags, ordering)  
