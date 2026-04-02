@@ -1,6 +1,6 @@
 # An Instrument Notebook
 
-This repository contains [An Instrument Notebook](https://musman-uk.github.io/an-instrument-notebook/) - a website gathering instruments and presenting them visually and sonically, with an accompanied note.
+This repository contains [An Instrument Notebook](https://musman-uk.github.io/an-instrument-notebook/) - a website gathering instruments and presenting them with imagery, sound, and an accompanied note.
 
 ---
 
