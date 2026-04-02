@@ -1,10 +1,9 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta-name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" href="https://musman-uk.github.io/an-instrument-notebook/assets/images/favicon.png">
 
@@ -16,14 +15,13 @@
       --lavender: #B3AEDF;
     }
 
-    /* Disable overscroll bounce + ensure full viewport coverage */
     html, body {
       overscroll-behavior: none;
       width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     body {
@@ -33,21 +31,25 @@
         linear-gradient(160deg, #05070D, #0A0F1F, #1C2541);
       color: var(--lavender);
       font-family: "Cormorant Garamond", serif;
-      min-height: 100vh;
-      display: block;
+      display: flex;
+      justify-content: center;
     }
 
-   
     .page {
+      height: 100vh;
       max-width: 700px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-      min-height: calc(100vh - 4rem);
+      width: 100%;
       display: flex;
       flex-direction: column;
     }
 
-  
+    .content-wrapper {
+      padding: 3.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
     .note-cluster {
       display: flex;
       gap: 0.35rem;
@@ -62,7 +64,6 @@
       text-shadow: 0 0 12px rgba(199,196,226,0.7);
     }
 
-   
     .title {
       font-size: 2.8rem;
       letter-spacing: 1px;
@@ -93,15 +94,6 @@
       z-index: -1;
     }
 
-    /* Content wrapper */
-    .content-wrapper {
-      width: 100%;
-      margin: 0 auto;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
     .content {
       font-size: 1rem;
       line-height: 1.55;
@@ -110,14 +102,13 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Signature */
     .signature {
       display: block;
       width: 100%;
       text-align: right;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       text-decoration: none;
-      margin-bottom: 25px;
+      margin-bottom: 35px;
     }
 
     .signature span {
@@ -136,35 +127,6 @@
       transform: translateY(-2px);
     }
 
-    .signature span:active {
-      color: var(--coral);
-      text-shadow: 0 0 14px rgba(255,111,97,0.75);
-      transform: translateY(-1px);
-    }
-
-    .license {
-      position: relative;
-      width: 100%;
-      font-size: 0.60rem;
-      text-align: center;
-      margin-top: auto;
-     
-      
-  
-      
-    }
-
-    /* Mobile glow */
-    @media (hover: none) and (pointer: coarse) {
-      .signature span {
-        text-shadow:
-          0 0 8px rgba(199,196,226,0.55),
-          0 0 14px rgba(199,196,226,0.35),
-          0 0 20px rgba(199,196,226,0.25);
-      }
-    }
-
-    
     .home-link {
       display: inline-block;
       width: 170px;
@@ -190,10 +152,11 @@
       transform: translateY(-2px);
     }
 
-    .home-link:active {
-      background: rgba(255,111,97,0.25);
-      box-shadow: 0 0 16px rgba(255,111,97,0.75);
-      transform: translateY(-1px);
+    .license {
+      font-size: 0.60rem;
+      text-align: center;
+      padding-bottom: 1rem;
+      margin-top: auto;
     }
   </style>
 </head>
@@ -202,24 +165,22 @@
 
   <div class="page">
 
-    <div class="note-cluster">
-      <div class="note">♫</div>
-      <div class="note">♪</div>
-      <div class="note">♫</div>
-    </div>
-
-    <div class="title">Prelude</div>
-
     <div class="content-wrapper">
 
+      <div class="note-cluster">
+        <div class="note">♫</div>
+        <div class="note">♪</div>
+        <div class="note">♫</div>
+      </div>
+
+      <div class="title">Prelude</div>
+
       <div class="content">
-      
-       <p>
-        An Instrument Notebook gathers musical instruments from different times and places, each accompanied by imagery, 
-        sound, and notes. Every instrument represented here is enriched by the culture surrounding it, 
-        the people who play it, and the music it lives within.
-       </p>
-      
+        <p>
+          An Instrument Notebook gathers musical instruments from different times and places, each accompanied by imagery,
+          sound, and notes. Every instrument represented here is enriched by the culture surrounding it,
+          the people who play it, and the music it lives within.
+        </p>
       </div>
 
       <a class="signature" href="https://github.com/musman-uk" target="_blank" rel="noopener noreferrer">
@@ -228,10 +189,11 @@
 
       <a class="home-link" href="https://musman-uk.github.io/an-instrument-notebook/">An Instrument Notebook</a>
 
-      <div class="license">© Mohammed Usman<br>
-    <br> All rights reserved. No commercial use, redistribution, or derivatives.
-  </div>
+    </div>
 
+    <div class="license">
+      © Mohammed Usman<br><br>
+      All rights reserved. No commercial use, redistribution, or derivatives.
     </div>
 
   </div>
