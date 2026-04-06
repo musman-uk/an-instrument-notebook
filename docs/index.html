@@ -14,11 +14,12 @@
       --lavender: #B3AEDF;
     }
 
-    /* Disable overscroll bounce on mobile */
+    /* Prevent mobile overscroll bounce to keep the notebook feeling grounded */
     html, body {
       overscroll-behavior: none;
     }
 
+    /* Background uses layered gradients to create a soft, studio-like ambience */
     body {
       margin: 0;
       padding: 2rem 1.5rem;
@@ -38,6 +39,7 @@
       margin: 0 auto;
     }
 
+    /* Prelude link sits above the title as a quiet navigation affordance */
     .top-bar {
       width: 100%;
       display: flex;
@@ -66,6 +68,7 @@
       transform: translateY(-2px);
     }
 
+    /* Decorative note cluster reinforces the musical theme */
     .note-cluster {
       display: flex;
       gap: 0.35rem;
@@ -99,6 +102,7 @@
       color: var(--lavender);
     }
 
+    /* Instrument cards arranged responsively to mimic a studio layout */
     .studio-sections {
       display: flex;
       flex-wrap: wrap;
@@ -169,7 +173,7 @@
 
     <div class="title">An Instrument Notebook</div>
 
-    <!-- Interaction hint -->
+    <!-- Hint explains the interaction model without cluttering the UI -->
     <div class="hint">Tap twice or double‑click an instrument to hear its sound.</div>
 
     <div class="studio-sections">
@@ -293,6 +297,11 @@
   </div>
 
   <script>
+    /*
+      Each instrument image can play a sound. To avoid overlapping audio,
+      only one sound plays at a time. Mobile devices lack a native double‑tap
+      event, so a manual tap‑interval check is used to simulate it.
+    */
     document.addEventListener("DOMContentLoaded", () => {
       let currentlyPlaying = null;
       const images = document.querySelectorAll(".instrument-image");

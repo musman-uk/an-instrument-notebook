@@ -17,6 +17,7 @@ permalink: "prelude/index.html"
       --lavender: #B3AEDF;
     }
 
+    /* Prevent mobile overscroll bounce and keep the page visually fixed */
     html, body {
       overscroll-behavior: none;
       width: 100%;
@@ -26,6 +27,7 @@ permalink: "prelude/index.html"
       overflow: hidden;
     }
 
+    /* Background mirrors the main Notebook page for continuity */
     body {
       background:
         radial-gradient(circle at 20% 30%, rgba(255,111,97,0.25), transparent 65%),
@@ -52,6 +54,7 @@ permalink: "prelude/index.html"
       flex: 1;
     }
 
+    /* Decorative notes reinforce the musical theme */
     .note-cluster {
       display: flex;
       gap: 0.35rem;
@@ -78,6 +81,7 @@ permalink: "prelude/index.html"
       z-index: 1;
     }
 
+    /* Soft radial glow behind the title to anchor it visually */
     .title::before {
       content: "";
       position: absolute;
@@ -104,6 +108,7 @@ permalink: "prelude/index.html"
       margin-bottom: 1.5rem;
     }
 
+    /* Signature sits at the end of the reading flow */
     .signature {
       display: block;
       width: 100%;
@@ -129,6 +134,7 @@ permalink: "prelude/index.html"
       transform: translateY(-2px);
     }
 
+    /* Home link styled consistently with the Notebook’s UI language */
     .home-link {
       display: inline-block;
       width: 170px;
@@ -185,6 +191,7 @@ permalink: "prelude/index.html"
         </p>
       </div>
 
+      <!-- noopener prevents tab‑nabbing; noreferrer avoids leaking the Notebook URL -->
       <a class="signature" href="https://github.com/musman-uk" target="_blank" rel="noopener noreferrer">
         <span>Mohammed Usman</span>
       </a>
