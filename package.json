@@ -1,7 +1,7 @@
 {
-  "name": "instrumental-notes",
+  "name": "an-instrument-notebook",
   "version": "1.0.0",
-  "description": "A small, CMS style static site of instrumental notes.",
+  "description": "A small, CMS style static site of musical instruments.",
   "scripts": {
     "build": "eleventy",
     "start": "eleventy --serve"
@@ -10,4 +10,3 @@
     "@11ty/eleventy": "^3.0.0"
   }
 }
-
