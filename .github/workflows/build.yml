@@ -1,9 +1,7 @@
 name: Build Site
 
 on:
-  workflow_dispatch:        # Manual trigger
-  # pull_request:
-  #   branches: [ main ]    # Enable later if you want PR-based builds
+  workflow_dispatch:        
 
 permissions:
   contents: write
@@ -41,6 +39,15 @@ jobs:
             echo "Error: docs/ folder not generated"
             exit 1
           fi
+
+      - name: Bundle code snapshot
+        run: node bundle-code.mjs
+
+      - name: Upload code artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: an-instrument-notebook-code
+          path: an-instrument-notebook-code.txt
 
       - name: Configure Git identity
         run: |
