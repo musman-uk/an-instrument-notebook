@@ -39,3 +39,6 @@ coverage/
 
 # Sass / CSS tools
 .sass-cache/
+
+# Code snapshots
+*-code.txt
