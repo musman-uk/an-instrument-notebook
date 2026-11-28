@@ -40,5 +40,8 @@ coverage/
 # Sass / CSS tools
 .sass-cache/
 
-# Code snapshots
+# Local Code Bundles and Changes
+code.txt
 *-code.txt
+apply-changes.mjs
+undo-changes.mjs
